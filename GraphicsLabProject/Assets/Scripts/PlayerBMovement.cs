@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAMovement : MonoBehaviour
+public class PlayerBMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float speed=5f;
     [SerializeField] private float jumpforce = 5f;
-    [SerializeField] Transform groundCheck;
+    [SerializeField]Transform groundCheck;
     private Rigidbody rBody;
     private float horizontalInput;
     private float verticalInput;
     private CapsuleCollider capsuleCollider;
-    [SerializeField] private LayerMask groundLayer;
-    private bool isControled = true;
+    [SerializeField]private LayerMask groundLayer;
+    private bool isControled = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,14 +36,13 @@ public class PlayerAMovement : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.Q))
             isControled = !isControled;
-
     }
     private void Jump()
     {
         rBody.velocity = new Vector3(rBody.velocity.x, jumpforce, rBody.velocity.z);
     }
 
-    private bool IsGrounded()
+    private bool  IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
     }
