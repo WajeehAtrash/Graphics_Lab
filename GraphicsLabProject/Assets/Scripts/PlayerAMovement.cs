@@ -29,7 +29,7 @@ public class PlayerAMovement : MonoBehaviour
             //https://www.youtube.com/watch?v=C70QxpI9F5Y
             Vector2 axis = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * speed;//getting the directions of the movement
             Vector3 forwad = new Vector3(-Camera.main.transform.right.z, 0.0f, Camera.main.transform.right.x);//the direction the camera looks at
-            Vector3 wishDirector = (forwad * axis.x + Camera.main.transform.right * axis.y + Vector3.up * rBody.velocity.y);
+            Vector3 wishDirector = (forwad * axis.x + Camera.main.transform.right * axis.y + Vector3.up * rBody.velocity.y);//final calculation ,where to move and distance
             rBody.velocity = wishDirector;
 
             if (Input.GetKey(KeyCode.Space) && IsGrounded())
