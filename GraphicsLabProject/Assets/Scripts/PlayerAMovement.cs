@@ -25,9 +25,12 @@ public class PlayerAMovement : MonoBehaviour
     {
         if (isControled)
         {
-            horizontalInput = Input.GetAxis("Horizontal");
-            verticalInput = Input.GetAxis("Vertical");
-            rBody.velocity = new Vector3(horizontalInput * speed, rBody.velocity.y, verticalInput * speed);
+            //--------------watch this video for more info:
+            //https://www.youtube.com/watch?v=C70QxpI9F5Y
+            Vector2 axis = new Vector2(Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * speed;//getting the directions of the movement
+            Vector3 forwad = new Vector3(-Camera.main.transform.right.z, 0.0f, Camera.main.transform.right.x);//the direction the camera looks at
+            Vector3 wishDirector = (forwad * axis.x + Camera.main.transform.right * axis.y + Vector3.up * rBody.velocity.y);
+            rBody.velocity = wishDirector;
 
             if (Input.GetKey(KeyCode.Space) && IsGrounded())
             {
@@ -35,7 +38,9 @@ public class PlayerAMovement : MonoBehaviour
             }
         }
         if (Input.GetKey(KeyCode.Q))
+        {
             isControled = !isControled;
+        }
 
     }
     private void Jump()
