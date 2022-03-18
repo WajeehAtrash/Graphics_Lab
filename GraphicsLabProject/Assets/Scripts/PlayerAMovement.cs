@@ -40,7 +40,6 @@ public class PlayerAMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Q))
         {
             isControled = !isControled;
-            Debug.Log("playerB:" + isControled);
         }
 
     }
