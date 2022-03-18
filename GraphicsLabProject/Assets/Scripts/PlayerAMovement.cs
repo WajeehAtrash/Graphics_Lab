@@ -7,11 +7,11 @@ public class PlayerAMovement : MonoBehaviour
     [SerializeField] private float speed = 5f;
     [SerializeField] private float jumpforce = 5f;
     [SerializeField] Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
     private Rigidbody rBody;
     private float horizontalInput;
     private float verticalInput;
     private CapsuleCollider capsuleCollider;
-    [SerializeField] private LayerMask groundLayer;
     private bool isControled = true;
     // Start is called before the first frame update
     void Start()
@@ -37,9 +37,10 @@ public class PlayerAMovement : MonoBehaviour
                 Jump();
             }
         }
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             isControled = !isControled;
+            Debug.Log("playerB:" + isControled);
         }
 
     }
@@ -51,5 +52,9 @@ public class PlayerAMovement : MonoBehaviour
     private bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
+    }
+    public bool GetIsControlled()
+    {
+        return isControled;
     }
 }
