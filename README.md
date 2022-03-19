@@ -11,3 +11,14 @@
 
 ![](week2.gif)
 
+- **Week3**:
+		- fixing the bug from the last week 1 hour.
+		- changing the camera position with player changing 0.5 hour.
+		- adding a pickup mechansim to hold cubes 1.5 hour.
+		- trying to add iteractble text (didnt work) 1 hour.
+		- watching unity pro builder tutrials and modeling a basic room 1.5 hour.
+		-implementing a presure plate mechansim for door opening 0.5 hour.
+		- design a basic demo level to domenstrate the progress and testing the added mechanism 1 hour.
+		- doing some search for how to implement grabler hook gun & portal gun 1 hour.
+
+
