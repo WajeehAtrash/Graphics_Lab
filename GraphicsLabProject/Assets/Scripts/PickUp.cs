@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour
+public class PickUp : MonoBehaviour,IInteractble
 {
     // Start is called before the first frame update
     public float pickUpRange = 5.0f;
@@ -61,5 +61,15 @@ public class PickUp : MonoBehaviour
         rBody.drag = 1;
         heldObj.transform.parent = null;
         heldObj = null;
+    }
+
+    public void Interact()
+    {
+        return;
+    }
+
+    public string GetDescription()
+    {
+        return "Press E to Pick Up";
     }
 }
