@@ -38,7 +38,7 @@ public class GrapplingGun : MonoBehaviour
     }
 
 
-    void StartGrapple()
+    void StartGrapple()//calling the function when clicking the right mouse button
     {
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance, whatIsGrappleable))
@@ -82,6 +82,7 @@ public class GrapplingGun : MonoBehaviour
 
         currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);
 
+        //giving the rope pointes to draw a line
         lr.SetPosition(0, gunTip.position);
         lr.SetPosition(1, currentGrapplePosition);
     }
