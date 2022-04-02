@@ -30,4 +30,12 @@
 		- doing some search for how to implement grabler hook gun & portal gun 1 hour.
 	![](week3.gif)
 
+- **Week4**:
 
+	Made no progress due to other obligations.
+- **Week5**:
+
+		- implementing Grappler Gun using spring joint,we used ray cast to detect if we had a collision with an object we can grapple to then we added to the player a spring joint component to connect it with the grappling point and applying physics on the player. (2 hours)
+		- the result we got wasn't satisfying ,we tried a different approach by applying an explosive force on the player at the direction he want to go to (didn't go will) we spend more time trying to improve our first approach and understanding why we got this result and we found that the main problem was choosing the right parameters for spring joint thats fit our movement implementation. (6 hours)
+	- **finale result**:
+	![](week5.gif)
