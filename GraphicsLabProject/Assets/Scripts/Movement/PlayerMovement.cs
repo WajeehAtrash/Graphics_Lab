@@ -2,22 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerBMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed=5f;
-    [SerializeField] private float jumpforce = 5f;
-    [SerializeField]Transform groundCheck;
+    [SerializeField] private float speed = 15f;
+    [SerializeField] private float jumpforce = 15f;
+    [SerializeField] Transform groundCheck;
+    [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private GameObject player;
     private Rigidbody rBody;
     private float horizontalInput;
     private float verticalInput;
     private CapsuleCollider capsuleCollider;
-    [SerializeField]private LayerMask groundLayer;
-    private bool isControled = false;
+    private bool isControled = true;
     // Start is called before the first frame update
     void Start()
     {
         rBody = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
+        if (player.name == "playerB")
+            isControled = false;
     }
 
     // Update is called once per frame
@@ -31,25 +34,38 @@ public class PlayerBMovement : MonoBehaviour
             Vector3 forwad = new Vector3(-Camera.main.transform.right.z, 0.0f, Camera.main.transform.right.x);//the direction the camera looks at
             Vector3 wishDirector = (forwad * axis.x + Camera.main.transform.right * axis.y + Vector3.up * rBody.velocity.y);//final calculation ,where to move and distance
             rBody.velocity = wishDirector;
-
+            //if(!IsGrounded())
+            //    rBody.velocity = 4*wishDirector;
             if (Input.GetKey(KeyCode.Space) && IsGrounded())
             {
                 Jump();
             }
+            //if (!IsGrounded())
+            //    speed = 15;
+            //else
+            //    speed = 5;
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
             isControled = !isControled;
-            Debug.Log("playerB:" + isControled);
         }
+
     }
     private void Jump()
     {
         rBody.velocity = new Vector3(rBody.velocity.x, jumpforce, rBody.velocity.z);
     }
 
-    private bool  IsGrounded()
+    private bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
+    }
+    public bool GetIsControlled()
+    {
+        return isControled;
+    }
+    public void SetSpeed(float speed)
+    {
+        this.speed = speed;
     }
 }

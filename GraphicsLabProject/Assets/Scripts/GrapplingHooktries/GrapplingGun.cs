@@ -9,9 +9,11 @@ public class GrapplingGun : MonoBehaviour
     private LineRenderer lr;
     private Vector3 grapplePoint;
     public LayerMask whatIsGrappleable;
-    public Transform gunTip, camera, player;
+    public Transform gunTip, cam, player;
     private float maxDistance = 100f;
-    private SpringJoint joint;  
+    private SpringJoint joint;
+    [SerializeField] private PlayerMovement controlledPlayer;
+
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
@@ -19,7 +21,7 @@ public class GrapplingGun : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))//clicking the right mouse button 
+        if (Input.GetMouseButtonDown(0))
         {
             StartGrapple();
         }
@@ -29,47 +31,45 @@ public class GrapplingGun : MonoBehaviour
         }
     }
 
-    //Called after Update
-    void LateUpdate()//Drwing the robe using late update to prevent robe sttutring and appearing in aglitchy way
+    //Late update used to draw the rope correctlly and prevent wierd behavior 
+    void LateUpdate()
     {
         DrawRope();
     }
 
-    //Grappling method called when the playe clicking the right mouse button
+
     void StartGrapple()
     {
         RaycastHit hit;
-        if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappleable))//checking if the traget is grappelable
+        if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance, whatIsGrappleable))
         {
-            grapplePoint = hit.point;                               // the coordinate where we want to grappel
+            grapplePoint = hit.point;
+            //controlledPlayer.SetSpeed(15);
             joint = player.gameObject.AddComponent<SpringJoint>();
-            joint.autoConfigureConnectedAnchor = false;             //telling unity that we want to add the anchor point manualy
-            joint.connectedAnchor = grapplePoint;                   //seting the anchor point  
+            joint.autoConfigureConnectedAnchor = false;
+            joint.connectedAnchor = grapplePoint;
 
             float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
 
             //The distance grapple will try to keep from grapple point. 
-            joint.maxDistance = distanceFromPoint * 0.5f;
+            joint.maxDistance = distanceFromPoint * 0.8f;
             joint.minDistance = distanceFromPoint * 0.25f;
 
+            joint.spring = 4.5f;
+            joint.damper = 3f;
+            joint.massScale = 450f;
 
-            joint.spring = 4f;      //The spring force used to keep the two objects together.
-            joint.damper = 5f;      //The damper force used to dampen the spring force.
-            joint.massScale = 100f;
-
-            // setting the number of vertices in the line
             lr.positionCount = 2;
-
             currentGrapplePosition = gunTip.position;
         }
     }
 
 
-    
-    // Call whenever we want to stop a grapple
+
     void StopGrapple()
     {
         lr.positionCount = 0;
+        //controlledPlayer.SetSpeed(5);
         Destroy(joint);
     }
 
@@ -78,12 +78,10 @@ public class GrapplingGun : MonoBehaviour
     void DrawRope()
     {
         //If not grappling, don't draw rope
-        //if (!isGrappel) return;
         if (!joint) return;
 
-        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);       //interpolated vector (Linear interpolation) for  move an object gradually between
+        currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);
 
-        //seting the line points to draw
         lr.SetPosition(0, gunTip.position);
         lr.SetPosition(1, currentGrapplePosition);
     }

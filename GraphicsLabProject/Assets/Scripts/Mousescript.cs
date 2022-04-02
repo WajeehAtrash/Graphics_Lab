@@ -30,7 +30,7 @@ public class Mousescript : MonoBehaviour
             SwapPlayers();
         }
     }
-    void SwapPlayers()
+    void SwapPlayers()//Todo: change grappler gun parameters so the effect will take place on the seconed player or disable it
     {
         Transform cam = controledPlayer.Find("Main Camera");
         cam.SetParent(unControledPlayer);
