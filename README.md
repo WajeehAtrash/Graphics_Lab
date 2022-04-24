@@ -35,7 +35,19 @@
 	Made no progress due to other obligations.
 - **Week5**:
 
-		- implementing Grappler Gun using spring joint,we used ray cast to detect if we had a collision with an object we can grapple to then we added to the player a spring joint component to connect it with the grappling point and applying physics on the player. (2 hours)
-		- the result we got wasn't satisfying ,we tried a different approach by applying an explosive force on the player at the direction he want to go to (didn't go will) we spend more time trying to improve our first approach and understanding why we got this result and we found that the main problem was choosing the right parameters for spring joint thats fit our movement implementation. (6 hours)
+	- implementing Grappler Gun using spring joint,we used ray cast to detect ifwe had a collision with an object we can grapple to then we added to theplayer a spring joint component to connect it with the grappling point andapplying physics on the player. (2 hours)
+	- the result we got wasn't satisfying ,we tried a different approach byapplying an explosive force on the player at the direction he want to go to(didn't go will) we spend more time trying to improve our first approach andunderstanding why we got this result and we found that the main problem waschoosing the right parameters for spring joint thats fit our movementimplementation. (6 hours)
 	- **finale result**:
 	![](week5.gif)
+
+- **Week6**:
+
+	- Made no progress due to other obligations.
+
+
+- **Week7**:
+	- now the grapple gun can grab the pickupable items(1h).
+	- Crosshair added for better aiming (0.5h).
+	- added the bones for an interactable system the shows popup messages for the player (2.5h).
+	![](week7_1.png)
+	![](week7_2.png)

@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour,IInteractble
+public class PickUp : MonoBehaviour
 {
     // Start is called before the first frame update
-    public float pickUpRange = 5.0f;
+    public float pickUpRange = 10.0f;
     private GameObject heldObj;
     [SerializeField] float objectDrag = 10.0f;
     [SerializeField] float moveForce = 250.0f;
     [SerializeField] private LayerMask pickUpLayer;
     public Transform holdParent;
+
     // Update is called once per frame
     void Update()
     {
@@ -21,7 +22,6 @@ public class PickUp : MonoBehaviour,IInteractble
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange, pickUpLayer))
                 {
-                    Debug.Log("Press E yo pickUp");//change to text on the screen
                     PickUpObject(hit.transform.gameObject);
                 }
             }
@@ -61,15 +61,5 @@ public class PickUp : MonoBehaviour,IInteractble
         rBody.drag = 1;
         heldObj.transform.parent = null;
         heldObj = null;
-    }
-
-    public void Interact()
-    {
-        return;
-    }
-
-    public string GetDescription()
-    {
-        return "Press E to Pick Up";
     }
 }

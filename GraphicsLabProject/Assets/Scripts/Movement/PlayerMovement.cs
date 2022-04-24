@@ -34,16 +34,10 @@ public class PlayerMovement : MonoBehaviour
             Vector3 forwad = new Vector3(-Camera.main.transform.right.z, 0.0f, Camera.main.transform.right.x);//the direction the camera looks at
             Vector3 wishDirector = (forwad * axis.x + Camera.main.transform.right * axis.y + Vector3.up * rBody.velocity.y);//final calculation ,where to move and distance
             rBody.velocity = wishDirector;
-            //if(!IsGrounded())
-            //    rBody.velocity = 4*wishDirector;
             if (Input.GetKey(KeyCode.Space) && IsGrounded())
             {
                 Jump();
             }
-            //if (!IsGrounded())
-            //    speed = 15;
-            //else
-            //    speed = 5;
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {

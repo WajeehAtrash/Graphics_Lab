@@ -8,12 +8,14 @@ public class GrapplingGun : MonoBehaviour
     //https://www.youtube.com/watch?v=Xgh4v1w5DxU&t=6s
     private LineRenderer lr;
     private Vector3 grapplePoint;
-    public LayerMask whatIsGrappleable;
+    public LayerMask GrappleLayer;
+    public LayerMask Pickup;
     public Transform gunTip, cam, player;
     private float maxDistance = 100f;
     private SpringJoint joint;
+    private bool grappling = false;
     [SerializeField] private PlayerMovement controlledPlayer;
-
+    private Transform pickupTranform;
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
@@ -41,7 +43,7 @@ public class GrapplingGun : MonoBehaviour
     void StartGrapple()//calling the function when clicking the right mouse button
     {
         RaycastHit hit;
-        if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance, whatIsGrappleable))
+        if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance, GrappleLayer))
         {
             grapplePoint = hit.point;
             //controlledPlayer.SetSpeed(15);
@@ -62,6 +64,20 @@ public class GrapplingGun : MonoBehaviour
             lr.positionCount = 2;
             currentGrapplePosition = gunTip.position;
         }
+        else if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance, Pickup))
+        {
+            grapplePoint = hit.point;
+            float distance = Vector3.Distance(player.position, grapplePoint);
+            //Transform Pickup = hit.transform;
+            //Pickup.position =new Vector3( player.position.x+3,player.position.y+3,player.position.z);
+            Rigidbody rbPickup = hit.transform.gameObject.GetComponent<Rigidbody>();
+            Vector3 normal = (player.position - grapplePoint).normalized;
+            rbPickup.velocity= new Vector3(10 * normal.x, 10 * normal.y, 10 * normal.z);
+            lr.positionCount = 2;
+            currentGrapplePosition = gunTip.position;
+            grappling = true;
+            pickupTranform = hit.transform;
+        }
     }
 
 
@@ -69,7 +85,7 @@ public class GrapplingGun : MonoBehaviour
     void StopGrapple()
     {
         lr.positionCount = 0;
-        //controlledPlayer.SetSpeed(5);
+        grappling = false;
         Destroy(joint);
     }
 
@@ -78,13 +94,20 @@ public class GrapplingGun : MonoBehaviour
     void DrawRope()
     {
         //If not grappling, don't draw rope
-        if (!joint) return;
+        if (!joint&&grappling==false) return;
 
         currentGrapplePosition = Vector3.Lerp(currentGrapplePosition, grapplePoint, Time.deltaTime * 8f);
-
-        //giving the rope pointes to draw a line
-        lr.SetPosition(0, gunTip.position);
-        lr.SetPosition(1, currentGrapplePosition);
+        if (grappling == false)
+        {
+            //giving the rope pointes to draw a line
+            lr.SetPosition(0, gunTip.position);
+            lr.SetPosition(1, currentGrapplePosition);
+        }
+        else
+        {
+            lr.SetPosition(0, gunTip.position);
+            lr.SetPosition(1, pickupTranform.position);
+        }
     }
 
     public bool IsGrappling()
