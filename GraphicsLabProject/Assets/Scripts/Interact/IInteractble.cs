@@ -4,6 +4,9 @@ using UnityEngine;
 
 public interface IInteractble
 {
-    void Interact();
-    string GetDescription();
+    float MaxRange { get; }
+
+    void OnStartHover();
+    //void OnInteract();
+    void OnEndHover();
 }
