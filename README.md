@@ -49,7 +49,12 @@
 	- now the grapple gun can grab the pickupable items(1h).
 	- Crosshair added for better aiming (0.5h).
 	- added the bones for an interactable system the shows popup messages for the player (2.5h).
+	![](Week7.gif)
 	![](week7_1.png)
 	![](week7_2.png)
 - **week8**:
-	-
+	- we wasn't satisfied about the way the grapplegun grap object so we decided to change it, we tried to change the object material first , we tried to reduce the material friction first and after we grabed it we added the friction back didn't the result wasn't that good, so decided to implement an impulce force on the object and we got a good grabing movment for the object but we couldn't stop it immediatly after implying the force(we need to figure a way to do that). (1 hour)
+	![](Week8.gif)
+	- we found a bug in the project sometimes the grapplegun doesn't hit the pickupable object intead hits the ground behind it.
+	![](Week8_bug.gif)
+	- fixing a small isuue in the Iteractable system displaying messages while holding the object (0.5 hour)
