@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Mousescript : MonoBehaviour
+public class CameraMovement : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] private float mouseSensitivity=100f;
@@ -38,5 +38,10 @@ public class Mousescript : MonoBehaviour
         Transform temp = controledPlayer;
         controledPlayer = unControledPlayer;
         unControledPlayer = temp;
+    }
+
+    public Quaternion GetRotation()
+    {
+        return transform.rotation;
     }
 }
