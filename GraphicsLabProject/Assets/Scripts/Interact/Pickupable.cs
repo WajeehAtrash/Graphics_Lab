@@ -23,7 +23,6 @@ public class Pickupable : MonoBehaviour, IInteractble
         if (interacting == false)
         {
             text.SetActive(true);
-            interacting = true;
         }
     }
 
