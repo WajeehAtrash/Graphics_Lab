@@ -41,6 +41,18 @@
 	- now the grapple gun can grab the pickupable items(1h).
 	- Crosshair added for better aiming (0.5h).
 	- added the bones for an interactable system the shows popup messages for the player (2.5h).
+	![](Week7.gif)
 	![](week7_1.png)
 	![](week7_2.png)
+  
+- **week8**:
+	- we wasn't satisfied about the way the grapplegun grap object so we decided to change it, we tried to change the object material first , we tried to reduce the material friction first and after we grabed it we added the friction back didn't the result wasn't that good, so decided to implement an impulce force on the object and we got a good grabing movment for the object but we couldn't stop it immediatly after implying the force(we need to figure a way to do that). (1 hour)
+	![](Week8.gif)
+	- we found a bug in the project sometimes the grapplegun doesn't hit the pickupable object intead hits the ground behind it.
+	![](Week8_bug.gif)
+	- fixing a small isuue in the Iteractable system displaying messages while holding the object (0.5 hour)
+	- did a research about  portal guns how to implement and how to render what in the other side of the portal, this week  the main work was shooting two portals and align them on the surfaces(the portals are in the scene from the begining and when we want to shoot we just changing there locations)in addition we took care of some edge cases like overhanging and wall intersections while aligning the portals.(6.5h)
+	- for next week we want to put more work on alignment,change the portal shape into an ellipse and implement the teleporting mechanism.
+	![](week8.png)
+	![](Week8_portal.gif)
 

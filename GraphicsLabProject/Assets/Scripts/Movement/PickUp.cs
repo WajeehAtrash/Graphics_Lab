@@ -52,6 +52,8 @@ public class PickUp : MonoBehaviour
             objRigidbody.drag = objectDrag;
             objRigidbody.transform.parent = holdParent;
             heldObj = pickObj;
+            Pickupable obj = heldObj.GetComponent<Pickupable>();
+            obj.SetInteracting(true);
         }
     }
     void DropObject()
@@ -59,7 +61,10 @@ public class PickUp : MonoBehaviour
         Rigidbody rBody = heldObj.GetComponent<Rigidbody>();
         rBody.useGravity = true;
         rBody.drag = 1;
+        Pickupable obj = heldObj.GetComponent<Pickupable>();
+        obj.SetInteracting(false);
         heldObj.transform.parent = null;
         heldObj = null;
+        
     }
 }

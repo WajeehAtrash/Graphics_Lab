@@ -40,13 +40,11 @@ public class CameraRaycasting : MonoBehaviour
                         currentTarget.OnEndHover();
                         currentTarget = interactble;
                         currentTarget.OnStartHover();
-                        return;
                     }
                     else
                     {
                         currentTarget = interactble;
                         currentTarget.OnStartHover();
-                        return;
                     }
                 }
                 else
