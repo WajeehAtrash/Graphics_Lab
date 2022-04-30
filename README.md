@@ -51,3 +51,5 @@
 	- added the bones for an interactable system the shows popup messages for the player (2.5h).
 	![](week7_1.png)
 	![](week7_2.png)
+- **week8**:
+	-

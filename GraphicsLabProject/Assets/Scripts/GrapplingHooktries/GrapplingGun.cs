@@ -68,15 +68,16 @@ public class GrapplingGun : MonoBehaviour
         {
             grapplePoint = hit.point;
             float distance = Vector3.Distance(player.position, grapplePoint);
-            //Transform Pickup = hit.transform;
-            //Pickup.position =new Vector3( player.position.x+3,player.position.y+3,player.position.z);
             Rigidbody rbPickup = hit.transform.gameObject.GetComponent<Rigidbody>();
             Vector3 normal = (player.position - grapplePoint).normalized;
-            rbPickup.velocity= new Vector3(10 * normal.x, 10 * normal.y, 10 * normal.z);
+            Vector3 force=new Vector3(30 * normal.x, 30 * normal.y, 30 * normal.z);
+            rbPickup.AddForce(force, ForceMode.Impulse);
             lr.positionCount = 2;
             currentGrapplePosition = gunTip.position;
             grappling = true;
             pickupTranform = hit.transform;
+            rbPickup.velocity = Vector3.zero;
+            rbPickup.angularVelocity = Vector3.zero;
         }
     }
 
