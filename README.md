@@ -60,3 +60,4 @@
 	- fixing a small isuue in the Iteractable system displaying messages while holding the object (0.5 hour)
 	- did a research about  portal guns how to implement and how to render what in the other side of the portal, this week  the main work was shooting two portals and align them on the surfaces(the portals are in the scene from the begining and when we want to shoot we just changing there locations)in addition we took care of some edge cases like overhanging and wall intersections while aligning the portals.(6.5h)
 	- for next week we want to put more work on alignment,change the portal shape into an ellipse and implement the teleporting mechanism.
+	![](week8.png)
