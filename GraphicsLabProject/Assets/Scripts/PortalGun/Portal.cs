@@ -8,11 +8,11 @@ public class Portal : MonoBehaviour
     [field: SerializeField]
     public Portal OtherPortal { get; private set; }
 
-    //[SerializeField]
-    //private Renderer outlineRenderer;
+    [SerializeField]
+    private Renderer outlineRenderer;
 
-    //[field: SerializeField]
-    //public Color PortalColour { get; private set; }
+    [field: SerializeField]
+    public Color PortalColour { get; private set; }
 
     [SerializeField]
     private LayerMask placementMask;
@@ -36,7 +36,7 @@ public class Portal : MonoBehaviour
 
     private void Start()
     {
-        //outlineRenderer.material.SetColor("_OutlineColour", PortalColour);
+        outlineRenderer.material.SetColor("_OutlineColour", PortalColour);
 
         gameObject.SetActive(false);
     }
@@ -58,6 +58,7 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("enter");
         var obj = other.GetComponent<PortalableObject>();
         if (obj != null)
         {
@@ -68,6 +69,7 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("exit");
         var obj = other.GetComponent<PortalableObject>();
 
         if (portalObjects.Contains(obj))
@@ -130,7 +132,7 @@ public class Portal : MonoBehaviour
             Vector3 raycastPos = testTransform.TransformPoint(testPoints[i]);
             Vector3 raycastDir = testTransform.TransformDirection(testDirs[i]);
 
-            if(Physics.CheckSphere(raycastPos,0.05f,placementMask))//checking if the starting point is already inside a wall collider
+            if(Physics.CheckSphere(raycastPos,0.05f,placementMask)) //checking if the starting point is already inside a wall collider
             {
                 break;
             }

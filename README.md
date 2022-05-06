@@ -62,3 +62,11 @@
 	- for next week we want to put more work on alignment,change the portal shape into an ellipse and implement the teleporting mechanism.
 	![](week8.png)
 	![](Week8_portal.gif)
+-**week9**:
+	-replaced the portal look from a square to an ellipse,we found a bug by making this change, we found that portals where hanging on the walls and entering to walls intersections becuase of wrong layer choosing.
+	-to change the portal look we downloaded a model we found on the internet and used it, the model added some compliction,we had to make the portal object more complicated and consist of several objects.(1h)
+	-now we "can send objects throw the portals",when the object hits the portal collider we disable the collision physics and let him continue wallking throw the we made a clone of it that appears in the other side,when the clone is fully out from the portal we disable it and move the original object to the right place.(2.5h).
+	-the player can't go throw the portal until now.
+	-we made some bugs in the interactable system that we need to fix soon as possible
+	![](week9.png)
+	![](week9_2.png)
