@@ -11588,7 +11588,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1921
+  m_VersionIndex: 1927
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -11717,6 +11717,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <OtherPortal>k__BackingField: {fileID: 0}
+  outlineRenderer: {fileID: 0}
+  <PortalColour>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
   placementMask:
     serializedVersion: 2
     m_Bits: 129
