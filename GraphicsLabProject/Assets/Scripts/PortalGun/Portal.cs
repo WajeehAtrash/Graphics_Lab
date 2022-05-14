@@ -58,7 +58,7 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("enter");
+       
         var obj = other.GetComponent<PortalableObject>();
         if (obj != null)
         {

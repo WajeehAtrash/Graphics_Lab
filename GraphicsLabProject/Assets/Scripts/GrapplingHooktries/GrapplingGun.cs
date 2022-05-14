@@ -70,7 +70,7 @@ public class GrapplingGun : MonoBehaviour
             float distance = Vector3.Distance(player.position, grapplePoint);
             Rigidbody rbPickup = hit.transform.gameObject.GetComponent<Rigidbody>();
             Vector3 normal = (player.position - grapplePoint).normalized;
-            Vector3 force=new Vector3(30 * normal.x, 30 * normal.y, 30 * normal.z);
+            Vector3 force = new Vector3(30 * normal.x, 30 * normal.y, 30 * normal.z);
             rbPickup.AddForce(force, ForceMode.Impulse);
             lr.positionCount = 2;
             currentGrapplePosition = gunTip.position;

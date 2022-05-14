@@ -136,7 +136,7 @@ MonoBehaviour:
   moveForce: 250
   pickUpLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   holdParent: {fileID: 46679879815788973}
 --- !u!114 &335151670609315349
 MonoBehaviour:
@@ -155,7 +155,7 @@ MonoBehaviour:
   groundCheck: {fileID: 4784463658742564708}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 128
   player: {fileID: 4784463658287551741}
 --- !u!1 &4784463658742564709
 GameObject:

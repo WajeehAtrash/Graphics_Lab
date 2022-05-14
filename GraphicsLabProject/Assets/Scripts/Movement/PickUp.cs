@@ -10,7 +10,7 @@ public class PickUp : MonoBehaviour
     [SerializeField] float objectDrag = 10.0f;
     [SerializeField] float moveForce = 250.0f;
     [SerializeField] private LayerMask pickUpLayer;
-    public Transform holdParent;
+    [SerializeField] private Transform holdParent;
 
     // Update is called once per frame
     void Update()
@@ -20,8 +20,12 @@ public class PickUp : MonoBehaviour
             if (heldObj == null)
             {
                 RaycastHit hit;
-                if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, pickUpRange, pickUpLayer))
+                Debug.Log(transform.position);
+                Debug.Log(transform.TransformDirection(Vector3.forward));
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                if (Physics.Raycast( ray,out hit, pickUpRange, pickUpLayer))
                 {
+                    Debug.Log("raycast hit if");
                     PickUpObject(hit.transform.gameObject);
                 }
             }

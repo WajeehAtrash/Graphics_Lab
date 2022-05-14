@@ -31,6 +31,7 @@ public class PortalPlacement : MonoBehaviour
 
     private void FirePortal(int portalID, Vector3 pos, Vector3 dir, float distance)
     {
+        Debug.Log("fire");
         RaycastHit hit;
         Physics.Raycast(pos, dir, out hit, 250.0f, layerMask);
         if(hit.collider!=null)

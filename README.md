@@ -71,3 +71,7 @@
 	![](week9.png)
 	![](week9_2.png)
 	![](Week9_portal.gif)
+
+-**week10**
+	-making the player getting into the portals that caused seriouse bugs like wrong camera direction after exiting from the portal ,and the player rotation. tried to fix these bugs the main idea is to calculate the direction that the camera should look at after exiting the portal and rotate it toward this direction(3h).
+	-fixing the bug (1h).(add moer details)
