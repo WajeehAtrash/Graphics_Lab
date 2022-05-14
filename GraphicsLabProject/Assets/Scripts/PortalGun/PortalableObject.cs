@@ -18,6 +18,7 @@ public class PortalableObject : MonoBehaviour
     private new Rigidbody rigidbody;
     protected new Collider collider;
 
+    //const variable (variables of type quatrnion can't be const so we declared it as a readonly)
     private static readonly Quaternion halfTurn = Quaternion.Euler(0.0f, 180.0f, 0.0f);
 
     protected virtual void Awake()
@@ -92,8 +93,8 @@ public class PortalableObject : MonoBehaviour
         var outTransform = outPortal.transform;
 
         // Update position of object.
-        Vector3 relativePos = inTransform.InverseTransformPoint(transform.position);
-        relativePos = halfTurn * relativePos;
+        Vector3 relativePos = inTransform.InverseTransformPoint(transform.position); //Transforms position from world space to local space.
+        relativePos = halfTurn * relativePos;//rotating the object to face the sxit 
         transform.position = outTransform.TransformPoint(relativePos);
 
         // Update rotation of object.
@@ -102,7 +103,7 @@ public class PortalableObject : MonoBehaviour
         transform.rotation = outTransform.rotation * relativeRot;
 
         // Update velocity of rigidbody.
-        Vector3 relativeVel = inTransform.InverseTransformDirection(rigidbody.velocity);
+        Vector3 relativeVel = inTransform.InverseTransformDirection(rigidbody.velocity);//Transforms a direction from world space to local space
         relativeVel = halfTurn * relativeVel;
         rigidbody.velocity = outTransform.TransformDirection(relativeVel);
 

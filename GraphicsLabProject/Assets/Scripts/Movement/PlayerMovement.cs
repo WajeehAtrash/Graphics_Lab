@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : PortalableObject
 {
     [SerializeField] private float speed = 15f;
     [SerializeField] private float jumpforce = 15f;
@@ -14,6 +14,20 @@ public class PlayerMovement : MonoBehaviour
     private float verticalInput;
     private CapsuleCollider capsuleCollider;
     private bool isControled = true;
+    private CameraMovement cam;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        cam = GetComponentInChildren<CameraMovement>();
+    }
+
+    public override void Warp()
+    {
+        base.Warp();
+        transform.rotation = new Quaternion(0, 0, 0, 0);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
             Vector3 forwad = new Vector3(-Camera.main.transform.right.z, 0.0f, Camera.main.transform.right.x);//the direction the camera looks at
             Vector3 wishDirector = (forwad * axis.x + Camera.main.transform.right * axis.y + Vector3.up * rBody.velocity.y);//final calculation ,where to move and distance
             rBody.velocity = wishDirector;
+            
             if (Input.GetKey(KeyCode.Space) && IsGrounded())
             {
                 Jump();
@@ -45,6 +60,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
     private void Jump()
     {
         rBody.velocity = new Vector3(rBody.velocity.x, jumpforce, rBody.velocity.z);

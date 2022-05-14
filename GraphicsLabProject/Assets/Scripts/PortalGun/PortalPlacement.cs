@@ -16,6 +16,7 @@ public class PortalPlacement : MonoBehaviour
     {
         cameraMove = GetComponent<CameraMovement>();
     }
+
     private void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -30,6 +31,7 @@ public class PortalPlacement : MonoBehaviour
 
     private void FirePortal(int portalID, Vector3 pos, Vector3 dir, float distance)
     {
+        Debug.Log("fire");
         RaycastHit hit;
         Physics.Raycast(pos, dir, out hit, 250.0f, layerMask);
         if(hit.collider!=null)
@@ -56,7 +58,7 @@ public class PortalPlacement : MonoBehaviour
             //----------------------------------------------------------------------------------------------------
             //the up direction for the portal
             //cross product of two vectors returns a new vector perpendicular to those two (portalforward ,portal right)
-            var portalUp = -Vector3.Cross(portalRight, portalForward);
+            var portalUp = -Vector3.Cross(portalForward,portalRight);
             //----------------------------------------------------------------------------------------------------
             //constructing the rotation 
             var portalRotation = Quaternion.LookRotation(portalForward, portalUp);
