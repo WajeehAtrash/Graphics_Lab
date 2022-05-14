@@ -55,6 +55,7 @@
 	- for next week we want to put more work on alignment,change the portal shape into an ellipse and implement the teleporting mechanism.
 	![](week8.png)
 	![](Week8_portal.gif)
+
 -**week9**:
 	-replaced the portal look from a square to an ellipse,we found a bug by making this change, we found that portals where hanging on the walls and entering to walls intersections becuase of wrong layer choosing.
 	-to change the portal look we downloaded a model we found on the internet and used it, the model added some compliction,we had to make the portal object more complicated and consist of several objects.(1h)
