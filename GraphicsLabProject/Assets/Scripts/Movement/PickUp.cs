@@ -11,21 +11,19 @@ public class PickUp : MonoBehaviour
     [SerializeField] float moveForce = 250.0f;
     [SerializeField] private LayerMask pickUpLayer;
     [SerializeField] private Transform holdParent;
+    private PlayerMovement player;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E)&&player.GetIsControlled()==true)
         {
             if (heldObj == null)
             {
                 RaycastHit hit;
-                Debug.Log(transform.position);
-                Debug.Log(transform.TransformDirection(Vector3.forward));
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast( ray,out hit, pickUpRange, pickUpLayer))
                 {
-                    Debug.Log("raycast hit if");
                     PickUpObject(hit.transform.gameObject);
                 }
             }
@@ -54,6 +52,8 @@ public class PickUp : MonoBehaviour
             Rigidbody objRigidbody = pickObj.GetComponent<Rigidbody>();
             objRigidbody.useGravity = false;
             objRigidbody.drag = objectDrag;
+            Debug.Log(holdParent.parent);
+            Debug.Log(holdParent.transform.position);
             objRigidbody.transform.parent = holdParent;
             heldObj = pickObj;
             Pickupable obj = heldObj.GetComponent<Pickupable>();
@@ -70,5 +70,9 @@ public class PickUp : MonoBehaviour
         heldObj.transform.parent = null;
         heldObj = null;
         
+    }
+    private void Awake()
+    {
+        player = transform.GetComponent<PlayerMovement>();
     }
 }
