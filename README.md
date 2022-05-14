@@ -13,28 +13,20 @@
 
 - **Week3**:
 
-		- fixing the bug from the last week 1 hour.
-
-		- changing the camera position with player changing 0.5 hour.
-
-		- adding a pickup mechansim to hold cubes 1.5 hour.
-
-		- trying to add iteractble text (didnt work) 1 hour.
-
-		- watching unity pro builder tutrials and modeling a basic room 1.5 hour.
-
-		-implementing a presure plate mechansim for door opening 0.5 hour.
-
-		- design a basic demo level to domenstrate the progress and testing the added mechanism 1 hour.
-
-		- doing some search for how to implement grabler hook gun & portal gun 1 hour.
+	- fixing the bug from the last week 1 hour.
+	- changing the camera position with player changing 0.5 hour.
+	- adding a pickup mechansim to hold cubes 1.5 hour.
+	- trying to add iteractble text (didnt work) 1 hour.
+	- watching unity pro builder tutrials and modeling a basic room 1.5 hour.
+	-implementing a presure plate mechansim for door opening 0.5 hour.
+	- design a basic demo level to domenstrate the progress and testing the added mechanism 1 hour.
+	- doing some search for how to implement grabler hook gun & portal gun 1 hour.
 	![](week3.gif)
 
 - **Week4**:
 
 	Made no progress due to other obligations.
 - **Week5**:
-
 	- implementing Grappler Gun using spring joint,we used ray cast to detect ifwe had a collision with an object we can grapple to then we added to theplayer a spring joint component to connect it with the grappling point andapplying physics on the player. (2 hours)
 	- the result we got wasn't satisfying ,we tried a different approach byapplying an explosive force on the player at the direction he want to go to(didn't go will) we spend more time trying to improve our first approach andunderstanding why we got this result and we found that the main problem waschoosing the right parameters for spring joint thats fit our movementimplementation. (6 hours)
 	- **finale result**:
@@ -52,6 +44,7 @@
 	![](Week7.gif)
 	![](week7_1.png)
 	![](week7_2.png)
+
 - **week8**:
 	- we wasn't satisfied about the way the grapplegun grap object so we decided to change it, we tried to change the object material first , we tried to reduce the material friction first and after we grabed it we added the friction back didn't the result wasn't that good, so decided to implement an impulce force on the object and we got a good grabing movment for the object but we couldn't stop it immediatly after implying the force(we need to figure a way to do that). (1 hour)
 	![](Week8.gif)
