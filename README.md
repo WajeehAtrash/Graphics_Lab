@@ -55,7 +55,8 @@
 	- for next week we want to put more work on alignment,change the portal shape into an ellipse and implement the teleporting mechanism.
 	![](week8.png)
 	![](Week8_portal.gif)
--**week9**:
+- **week9**:
+
 	-replaced the portal look from a square to an ellipse,we found a bug by making this change, we found that portals where hanging on the walls and entering to walls intersections becuase of wrong layer choosing.
 	-to change the portal look we downloaded a model we found on the internet and used it, the model added some compliction,we had to make the portal object more complicated and consist of several objects.(1h)
 	-now we "can send objects throw the portals",when the object hits the portal collider we disable the collision physics and let him continue wallking throw the we made a clone of it that appears in the other side,when the clone is fully out from the portal we disable it and move the original object to the right place.(2.5h).
@@ -65,22 +66,22 @@
 	![](week9_2.png)
 	![](Week9_portal.gif)
 
--**week10**
+- **week10**
 
-	-making the player getting into the portals that caused seriouse bugs like wrong camera direction after exiting from the portal ,and the player rotation. tried to fix these bugs the main idea is to calculate the direction that the camera should look at after exiting the portal and rotate it toward this direction(3h).
-	-fixing the bug when the player entering the portal the camera issue solved by calculating the the direction the camera should look at and rotate the player to the state he was before entering the portal which is equals to (0,0,0) (1h).
+	- making the player getting into the portals that caused seriouse bugs like wrong camera direction after exiting from the portal ,and the player rotation. tried to fix these bugs the main idea is to calculate the direction that the camera should look at after exiting the portal and rotate it toward this direction(3h).
+	- fixing the bug when the player entering the portal the camera issue solved by calculating the the direction the camera should look at and rotate the player to the state he was before entering the portal which is equals to (0,0,0) (1h).
 	links that shows the issue(will be replaced by gifs soon):
 	https://youtu.be/49zGUHsb-dk
 	https://youtu.be/1-oA35GgcZk
 
 
-	-fixing the swapping between the character,before that we worked on each player separately when we began to add the ability each player had it's own camera and some times the abilities effected the wrong character now we have one camera that we change it parent according to the controlled player
+	- fixing the swapping between the character,before that we worked on each player separately when we began to add the ability each player had it's own camera and some times the abilities effected the wrong character now we have one camera that we change it parent according to the controlled player
 	and the ability take effect on the right player we did that by disabling the unnecessarily component for the controlled player and enabling them on swapping.(2h)
 	result after fixing the issues:
 	https://youtu.be/fqSsEoCbUEY
 
-	-fixing pickup items bug, the player couldn't pick up an items due an wrong ray casting we used to raycast a ray from the player forward direction and check if it collided with a pickup item and when pressing "E" to hold it for some reason this way stopped working for us after we figured out the issue we start to shoot a raycast according to the camera direction it's look at.after fixing this issue we figured a new issue and it was the pickup item holder the items translated into a different than the supposed one and that happened due to character have a component of type PickUp.cs this component is responsible for picking up items, so when we pressed e to pick up an item the function called on both instances in player A and player B and the engine could not decide to which holder to move the pickedup item to so the engine calculated the a place between both holders and but the item there the issue solved by just allowing the controlled player to check if there an item to hold. (1.5h)
-	-another thing that we didn't take off is changing the pickup item holder according to the camera rotation,when the player is holding an object the place will be fixed and will not move with the player when he is rotating the camera so we want to solve this issue we have an idea is to re calculate a relative position according to the camera rotation which "worked" for now the holder is in the middle of the player view.(0.5h)
+	- fixing pickup items bug, the player couldn't pick up an items due an wrong ray casting we used to raycast a ray from the player forward direction and check if it collided with a pickup item and when pressing "E" to hold it for some reason this way stopped working for us after we figured out the issue we start to shoot a raycast according to the camera direction it's look at.after fixing this issue we figured a new issue and it was the pickup item holder the items translated into a different than the supposed one and that happened due to character have a component of type PickUp.cs this component is responsible for picking up items, so when we pressed e to pick up an item the function called on both instances in player A and player B and the engine could not decide to which holder to move the pickedup item to so the engine calculated the a place between both holders and but the item there the issue solved by just allowing the controlled player to check if there an item to hold. (1.5h)
+	- another thing that we didn't take off is changing the pickup item holder according to the camera rotation,when the player is holding an object the place will be fixed and will not move with the player when he is rotating the camera so we want to solve this issue we have an idea is to re calculate a relative position according to the camera rotation which "worked" for now the holder is in the middle of the player view.(0.5h)
 	video explaining the issue:
 	https://youtu.be/OkOgHi2Q6So
 	the current result:
