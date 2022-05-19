@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,15 +23,16 @@ public class Portal : MonoBehaviour
     private List<PortalableObject> portalObjects = new List<PortalableObject>();
     public bool IsPlaced { get; private set; } = false;
     private Collider wallCollider;
+    private Material material;
+    private new Renderer renderer;
 
-    // Components.
-    public Renderer Renderer { get; private set; }
     private new BoxCollider collider;
 
     private void Awake()
     {
         collider = GetComponent<BoxCollider>();
-        Renderer = GetComponent<Renderer>();
+        renderer = GetComponent<Renderer>();
+        material = renderer.material;
     }
 
     private void Start()
@@ -43,7 +44,6 @@ public class Portal : MonoBehaviour
 
     private void Update()
     {
-        Renderer.enabled = OtherPortal.IsPlaced;
 
         for (int i = 0; i < portalObjects.Count; ++i)
         {
@@ -69,7 +69,6 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("exit");
         var obj = other.GetComponent<PortalableObject>();
 
         if (portalObjects.Contains(obj))
@@ -219,5 +218,15 @@ public class Portal : MonoBehaviour
     {
         gameObject.SetActive(false);
         IsPlaced = false;
+    }
+
+    public void SetMaskId(int id)
+    {
+        material.SetInt("_MaskID", id);
+    }
+
+    public bool IsRendererVisible()
+    {
+        return renderer.isVisible;
     }
 }
