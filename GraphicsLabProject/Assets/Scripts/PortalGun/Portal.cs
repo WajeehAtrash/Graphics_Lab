@@ -1,4 +1,4 @@
-    using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -25,7 +25,7 @@ public class Portal : MonoBehaviour
     private Collider wallCollider;
     private Material material;
     private new Renderer renderer;
-
+    // Components.
     private new BoxCollider collider;
 
     private void Awake()
@@ -44,6 +44,7 @@ public class Portal : MonoBehaviour
 
     private void Update()
     {
+        renderer.enabled = OtherPortal.IsPlaced;
 
         for (int i = 0; i < portalObjects.Count; ++i)
         {
@@ -58,7 +59,7 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       
+
         var obj = other.GetComponent<PortalableObject>();
         if (obj != null)
         {
@@ -84,7 +85,7 @@ public class Portal : MonoBehaviour
         transform.position = pos;
         transform.rotation = rot;
         //placing the portal infornt of the wall (slightly) to avoid z-fighting
-        transform.position -= transform.forward*0.001f;
+        transform.position -= transform.forward * 0.001f;
         //preventeing the placing a portal in a wall intersection or on the edge of the wall such that the portal will look like floating(Overhang) 
         FixOverhangs();
         FixIntersects();
@@ -105,7 +106,7 @@ public class Portal : MonoBehaviour
     {
         //checking maually if Overhang exists
         /*
-         * raycast from just behind the portal at each of its four edges, pointing inwards towards the portal’s centre
+         * raycast from just behind the portal at each of its four edges, pointing inwards towards the portalï¿½s centre
          * If the start point already intersects a wall fine the edge doesn't overhang
          * else we will try nudge the portal and prevent overhang
         */
@@ -131,11 +132,11 @@ public class Portal : MonoBehaviour
             Vector3 raycastPos = testTransform.TransformPoint(testPoints[i]);
             Vector3 raycastDir = testTransform.TransformDirection(testDirs[i]);
 
-            if(Physics.CheckSphere(raycastPos,0.05f,placementMask)) //checking if the starting point is already inside a wall collider
+            if (Physics.CheckSphere(raycastPos, 0.05f, placementMask)) //checking if the starting point is already inside a wall collider
             {
                 break;
             }
-            else if(Physics.Raycast(raycastPos,raycastDir,out hit,2.1f,placementMask))
+            else if (Physics.Raycast(raycastPos, raycastDir, out hit, 2.1f, placementMask))
             {
                 Vector3 offest = hit.point - raycastPos;
                 testTransform.Translate(offest, Space.World);

@@ -12587,13 +12587,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29680f73722eea644be0458c5b2741a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <OtherPortal>k__BackingField: {fileID: 871084147}
+  <OtherPortal>k__BackingField: {fileID: 0}
   outlineRenderer: {fileID: 0}
   <PortalColour>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
   placementMask:
     serializedVersion: 2
     m_Bits: 129
-  testTransform: {fileID: 795898643}
+  testTransform: {fileID: 0}
 --- !u!65 &795898650
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12735,7 +12735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <OtherPortal>k__BackingField: {fileID: 1591194333}
   outlineRenderer: {fileID: 991097006}
-  <PortalColour>k__BackingField: {r: 0, g: 0.052369833, b: 1, a: 0}
+  <PortalColour>k__BackingField: {r: 0, g: 0.4202628, b: 1, a: 0}
   placementMask:
     serializedVersion: 2
     m_Bits: 128
@@ -12962,17 +12962,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856402514}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &871084147 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7320749318404255685, guid: e3cd4fb947b05b34d92e7d927d8323b5, type: 3}
-  m_PrefabInstance: {fileID: 7320749318699261878}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29680f73722eea644be0458c5b2741a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &886264602
 Mesh:
   m_ObjectHideFlags: 0
@@ -13190,7 +13179,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2d6fd3d0b54a1d34393b520f2286f127, type: 2}
+  - {fileID: 2100000, guid: 1795957e7f0fc7b4aa5269f37d65217a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13653,7 +13642,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1200089954}
   - component: {fileID: 1200089952}
-  - component: {fileID: 1200089953}
   m_Layer: 0
   m_Name: PortalCamera
   m_TagString: Untagged
@@ -13668,7 +13656,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200089951}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -13704,14 +13692,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &1200089953
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1200089951}
-  m_Enabled: 1
 --- !u!4 &1200089954
 Transform:
   m_ObjectHideFlags: 0
@@ -14364,7 +14344,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1416
+  m_Name: pb_Mesh-1424
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -16437,6 +16417,10 @@ PrefabInstance:
       propertyPath: portals
       value: 
       objectReference: {fileID: 74112795}
+    - target: {fileID: 6572949798546909581, guid: d44118257c4170747909351b2b0908e0, type: 3}
+      propertyPath: layerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 7370869375866362534, guid: d44118257c4170747909351b2b0908e0, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.6
@@ -16517,7 +16501,8 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: ee1bc0dcc2b8df54aa657e6331ed855b, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7370869376981939777, guid: d44118257c4170747909351b2b0908e0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d44118257c4170747909351b2b0908e0, type: 3}
 --- !u!1001 &5023809701724791754
 PrefabInstance:
@@ -16622,6 +16607,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5023809701274809974, guid: 2f938c9d7c82ee9488939fb6f15d34a9, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1795957e7f0fc7b4aa5269f37d65217a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f938c9d7c82ee9488939fb6f15d34a9, type: 3}
 --- !u!1001 &5456721333907292147
@@ -16726,7 +16715,7 @@ PrefabInstance:
       objectReference: {fileID: 1374194536}
     - target: {fileID: 7320749318404255684, guid: e3cd4fb947b05b34d92e7d927d8323b5, type: 3}
       propertyPath: m_VersionIndex
-      value: 1936
+      value: 1942
       objectReference: {fileID: 0}
     - target: {fileID: 7320749318404255685, guid: e3cd4fb947b05b34d92e7d927d8323b5, type: 3}
       propertyPath: <OtherPortal>k__BackingField

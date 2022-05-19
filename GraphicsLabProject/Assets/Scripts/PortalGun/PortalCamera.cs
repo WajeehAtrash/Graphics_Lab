@@ -30,7 +30,7 @@ public class PortalCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
@@ -41,6 +41,12 @@ public class PortalCamera : MonoBehaviour
          * then do the same thing for the second portal and a mask ID of 2 
          * finally output the resulting main texture 
         */
+        if (!portals[0].IsPlaced || !portals[1].IsPlaced)
+        {
+            Graphics.Blit(source, destination);
+            return;
+        }
+
         if (portals[0].IsRendererVisible())
         {
             // Render the first portal output onto the image.
@@ -48,7 +54,6 @@ public class PortalCamera : MonoBehaviour
             portalMaterial.SetInt("_MaskID", maskID1);
             Graphics.Blit(tempTexture, source, portalMaterial);
         }
-
         if (portals[1].IsRendererVisible())
         {
             // Render the first portal output onto the image.
@@ -62,21 +67,22 @@ public class PortalCamera : MonoBehaviour
     }
 
     //rendering the view for the in portal
-    private void RenderCamera(Portal inPortal,Portal outPortal)
+    private void RenderCamera(Portal inPortal, Portal outPortal)
     {
         Transform inTransform = inPortal.transform;
         Transform outTransform = outPortal.transform;
 
-        //-------positioning the camera behind the outportal--------------
-        Vector3 relativePos = inTransform.InverseTransformPoint(transform.position); // converting from world space to a local space to the camera 
-        relativePos = Quaternion.Euler(0.0f, 180.0f, 0.0f) * relativePos; //rotate the position
-        portalCamera.transform.position = outTransform.TransformPoint(relativePos); //converting the position from local space to a world space 
+        // Position the camera behind the other portal.
+        Vector3 relativePos = inTransform.InverseTransformPoint(transform.position);
+        relativePos = Quaternion.Euler(0.0f, 180.0f, 0.0f) * relativePos;
+        portalCamera.transform.position = outTransform.TransformPoint(relativePos);
 
-        //--------Rotating the camera to look through the other portal-----------
+        // Rotate the camera to look through the other portal.
         Quaternion relativeRot = Quaternion.Inverse(inTransform.rotation) * transform.rotation;
         relativeRot = Quaternion.Euler(0.0f, 180.0f, 0.0f) * relativeRot;
         portalCamera.transform.rotation = outTransform.rotation * relativeRot;
-
+        
+        // Render the camera to its render target.
         portalCamera.Render();
     }
 }

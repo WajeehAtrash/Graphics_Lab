@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private float mouseSensitivity=100f;
+    //[SerializeField] private float mouseSensitivity=100f;
     public Transform controledPlayer;
     public Transform unControledPlayer;
     private const float cameraSpeed = 3.0f;

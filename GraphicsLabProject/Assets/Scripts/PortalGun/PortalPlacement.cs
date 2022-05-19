@@ -63,7 +63,7 @@ public class PortalPlacement : MonoBehaviour
             var portalRotation = Quaternion.LookRotation(portalForward, portalUp);
 
             // Attempt to place the portal.
-            bool wasPlaced = portals.Portals[portalID].PlacePortal(hit.collider, hit.point, portalRotation);
+            portals.Portals[portalID].PlacePortal(hit.collider, hit.point, portalRotation);
         }
     }
 
