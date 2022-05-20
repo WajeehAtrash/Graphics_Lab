@@ -92,3 +92,12 @@
 
 		https://youtu.be/W0aUq_XawBk
 - **week11**
+
+	- Rendering image through portals to do that we added another camera called portalCamera, the position of this camera will be the inverse of the main camera relatively for the inportal, by applying this calculation the portal camera will be positioned behind the portal then take the scene that the camera sees and render it opn the portal surface using  stencil buffer , during implementing this method we faced alot of bugs like the main camera scene went black then goes back to normal periodically (https://youtu.be/QuX2n-NABM0) and this rips on the portal surface
+	![](week11_res1.png)
+	![](week11_res2.png)
+	the cause of these bug mainly was a wrong choice for the materials shaders for the portal it self and its outline.
+	the finale results:
+	(https://youtu.be/RySI0Rfh-iI)
+	![](week11_goodresult.png)
+	- we have an issue that some times the player falls outside the map we tested the feature in, this happens because we ignore collisions when entering the portal to simulate the effect of entering it and after exiting from the other side we make the collisions on again sue to the walls and the floor are one huge object in the testing scene this behavior happens(https://youtu.be/TDqF98X9eIM)

@@ -21,7 +21,7 @@ public class Portal : MonoBehaviour
     private Transform testTransform;
 
     private List<PortalableObject> portalObjects = new List<PortalableObject>();
-    public bool IsPlaced { get; private set; } = false;
+    private bool isPlaced = false;
     private Collider wallCollider;
     private Material material;
     private new Renderer renderer;
@@ -44,8 +44,6 @@ public class Portal : MonoBehaviour
 
     private void Update()
     {
-        renderer.enabled = OtherPortal.IsPlaced;
-
         for (int i = 0; i < portalObjects.Count; ++i)
         {
             Vector3 objPos = transform.InverseTransformPoint(portalObjects[i].transform.position);
@@ -59,6 +57,8 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!OtherPortal.isPlaced)
+            return;
 
         var obj = other.GetComponent<PortalableObject>();
         if (obj != null)
@@ -85,7 +85,7 @@ public class Portal : MonoBehaviour
         transform.position = pos;
         transform.rotation = rot;
         //placing the portal infornt of the wall (slightly) to avoid z-fighting
-        transform.position -= transform.forward * 0.001f;
+        transform.position -= transform.forward * 0.010f;
         //preventeing the placing a portal in a wall intersection or on the edge of the wall such that the portal will look like floating(Overhang) 
         FixOverhangs();
         FixIntersects();
@@ -96,7 +96,7 @@ public class Portal : MonoBehaviour
             transform.rotation = testTransform.rotation;
 
             gameObject.SetActive(true);
-            IsPlaced = true;
+            isPlaced = true;
             return true;
         }
         return true;
@@ -218,7 +218,7 @@ public class Portal : MonoBehaviour
     public void RemovePortal()
     {
         gameObject.SetActive(false);
-        IsPlaced = false;
+        isPlaced = false;
     }
 
     public void SetMaskId(int id)
@@ -230,4 +230,10 @@ public class Portal : MonoBehaviour
     {
         return renderer.isVisible;
     }
+
+    public bool IsPlaced()
+    {
+        return isPlaced;
+    }
+
 }

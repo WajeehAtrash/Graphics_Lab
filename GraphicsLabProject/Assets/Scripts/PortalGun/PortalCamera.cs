@@ -41,7 +41,7 @@ public class PortalCamera : MonoBehaviour
          * then do the same thing for the second portal and a mask ID of 2 
          * finally output the resulting main texture 
         */
-        if (!portals[0].IsPlaced || !portals[1].IsPlaced)
+        if (!portals[0].IsPlaced() || !portals[1].IsPlaced())
         {
             Graphics.Blit(source, destination);
             return;
@@ -81,7 +81,13 @@ public class PortalCamera : MonoBehaviour
         Quaternion relativeRot = Quaternion.Inverse(inTransform.rotation) * transform.rotation;
         relativeRot = Quaternion.Euler(0.0f, 180.0f, 0.0f) * relativeRot;
         portalCamera.transform.rotation = outTransform.rotation * relativeRot;
-        
+
+        Plane p = new Plane(-outTransform.forward, outTransform.position);
+        Vector4 clipPlane = new Vector4(p.normal.x, p.normal.y, p.normal.z, p.distance);
+        Vector4 clipPlaneCameraSpace = Matrix4x4.Transpose(Matrix4x4.Inverse(portalCamera.worldToCameraMatrix)) * clipPlane;
+        var newMatrix = mainCamera.CalculateObliqueMatrix(clipPlaneCameraSpace);
+        portalCamera.projectionMatrix = newMatrix;
+
         // Render the camera to its render target.
         portalCamera.Render();
     }

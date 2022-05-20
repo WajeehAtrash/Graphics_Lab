@@ -10,6 +10,9 @@ public class PortalPlacement : MonoBehaviour
     [SerializeField]
     private LayerMask layerMask;
 
+    //[SerializeField]
+    //private Crosshair crosshair;
+
     private CameraMovement cameraMove;
 
     private void Awake()

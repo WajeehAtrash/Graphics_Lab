@@ -12735,7 +12735,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <OtherPortal>k__BackingField: {fileID: 1591194333}
   outlineRenderer: {fileID: 991097006}
-  <PortalColour>k__BackingField: {r: 0, g: 0.4202628, b: 1, a: 0}
+  <PortalColour>k__BackingField: {r: 1, g: 0.75323707, b: 0, a: 0}
   placementMask:
     serializedVersion: 2
     m_Bits: 128
@@ -16555,6 +16555,18 @@ PrefabInstance:
       propertyPath: <OtherPortal>k__BackingField
       value: 
       objectReference: {fileID: 802100419}
+    - target: {fileID: 5023809700553036055, guid: 2f938c9d7c82ee9488939fb6f15d34a9, type: 3}
+      propertyPath: <PortalColour>k__BackingField.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023809700553036055, guid: 2f938c9d7c82ee9488939fb6f15d34a9, type: 3}
+      propertyPath: <PortalColour>k__BackingField.g
+      value: 0.38835526
+      objectReference: {fileID: 0}
+    - target: {fileID: 5023809700553036055, guid: 2f938c9d7c82ee9488939fb6f15d34a9, type: 3}
+      propertyPath: <PortalColour>k__BackingField.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5023809700553036075, guid: 2f938c9d7c82ee9488939fb6f15d34a9, type: 3}
       propertyPath: m_RootOrder
       value: 0
