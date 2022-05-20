@@ -45,6 +45,7 @@ public class GrapplingGun : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance, GrappleLayer))
         {
+            Debug.Log("ground");
             grapplePoint = hit.point;
             //controlledPlayer.SetSpeed(15);
             joint = player.gameObject.AddComponent<SpringJoint>();
@@ -66,6 +67,7 @@ public class GrapplingGun : MonoBehaviour
         }
         else if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance, Pickup))
         {
+            Debug.Log("pivkup");
             grapplePoint = hit.point;
             float distance = Vector3.Distance(player.position, grapplePoint);
             Rigidbody rbPickup = hit.transform.gameObject.GetComponent<Rigidbody>();
