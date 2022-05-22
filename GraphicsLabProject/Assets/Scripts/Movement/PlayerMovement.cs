@@ -25,6 +25,7 @@ public class PlayerMovement : PortalableObject
     public override void Warp()
     {
         base.Warp();
+        cam.ResetRotation();
         transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
@@ -40,6 +41,7 @@ public class PlayerMovement : PortalableObject
     // Update is called once per frame
     void Update()
     {
+        cam = GetComponentInChildren<CameraMovement>();
         if (isControled)
         {
             //--------------watch this video for more info:
@@ -48,7 +50,6 @@ public class PlayerMovement : PortalableObject
             Vector3 forwad = new Vector3(-Camera.main.transform.right.z, 0.0f, Camera.main.transform.right.x);//the direction the camera looks at
             Vector3 wishDirector = (forwad * axis.x + Camera.main.transform.right * axis.y + Vector3.up * rBody.velocity.y);//final calculation ,where to move and distance
             rBody.velocity = wishDirector;
-            
             if (Input.GetKey(KeyCode.Space) && IsGrounded())
             {
                 Jump();
@@ -56,6 +57,7 @@ public class PlayerMovement : PortalableObject
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
+           
             isControled = !isControled;
         }
 

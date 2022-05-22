@@ -5,7 +5,8 @@ using UnityEngine;
 public class CameraMovement : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] private float mouseSensitivity=100f;
+    //[SerializeField] private float mouseSensitivity=100f;
+    [SerializeField] Transform place;
     public Transform controledPlayer;
     public Transform unControledPlayer;
     private const float cameraSpeed = 3.0f;
@@ -38,7 +39,7 @@ public class CameraMovement : MonoBehaviour
             targetEuler.x -= 360.0f;
         }
 
-        targetEuler.x = Mathf.Clamp(targetEuler.x, -90.0f, 90.0f);
+        targetEuler.x = Mathf.Clamp(targetEuler.x, -75.0f, 75.0f);
         TargetRotation = Quaternion.Euler(targetEuler);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, TargetRotation,Time.deltaTime * 15.0f);
@@ -71,10 +72,9 @@ public class CameraMovement : MonoBehaviour
         return transform.rotation;
     }
 
-    public Quaternion ResetRotation()
+    public void ResetRotation()
     {
-        TargetRotation= Quaternion.LookRotation(transform.forward, Vector3.up);
-        return TargetRotation;
+        TargetRotation = Quaternion.LookRotation(transform.forward, Vector3.up);
     }
 
     public Quaternion GetCamRotation()
@@ -114,5 +114,10 @@ public class CameraMovement : MonoBehaviour
             if (result != null) return result;
         }
         return null;
+    }
+
+    public Vector3 GetDirection()
+    {
+        return (transform.position - place.position).normalized;
     }
 }
