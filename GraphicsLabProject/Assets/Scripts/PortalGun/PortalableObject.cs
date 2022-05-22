@@ -8,13 +8,11 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class PortalableObject : MonoBehaviour
 {
+    private Portal inPortal;
+    private Portal outPortal;
     private GameObject cloneObject;
 
     private int inPortalCount = 0;
-
-    private Portal inPortal;
-    private Portal outPortal;
-
     private new Rigidbody rigidbody;
     protected new Collider collider;
 
@@ -43,7 +41,7 @@ public class PortalableObject : MonoBehaviour
             return;
         }
 
-        if (cloneObject.activeSelf && inPortal.IsPlaced && outPortal.IsPlaced)
+        if (cloneObject.activeSelf && inPortal.IsPlaced() && outPortal.IsPlaced())
         {
             var inTransform = inPortal.transform;
             var outTransform = outPortal.transform;
@@ -68,16 +66,17 @@ public class PortalableObject : MonoBehaviour
     {
         this.inPortal = inPortal;
         this.outPortal = outPortal;
-
+        Debug.Log(wallCollider);
         Physics.IgnoreCollision(collider, wallCollider);
 
-        cloneObject.SetActive(false);
+        cloneObject.SetActive(true);
 
         ++inPortalCount;
     }
 
     public void ExitPortal(Collider wallCollider)
     {
+        Debug.Log(wallCollider);
         Physics.IgnoreCollision(collider, wallCollider, false);
         --inPortalCount;
 

@@ -16,11 +16,13 @@ public class ObjectHolderMovment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        dist = Vector3.Distance(cam.transform.position, transform.position);
-        float holderZ = transform.position.z;
-        Vector3 direction = (-cam.transform.right - cam.transform.forward).normalized;
-        Vector3 holderPosition = cam.transform.position + cam.transform.forward * dist;
-        //holderPosition.z = holderZ;
-        transform.position = holderPosition;
+        PlayerMovement parent = GetComponentInParent<PlayerMovement>();
+        if(parent.GetIsControlled()==true)
+        {
+            dist = Vector3.Distance(cam.transform.position, transform.position);
+            Vector3 holderPosition = cam.transform.position + -cam.GetDirection() * dist;
+
+            transform.position = holderPosition;
+        }
     }
 }

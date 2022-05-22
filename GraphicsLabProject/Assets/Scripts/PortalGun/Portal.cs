@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,17 +21,18 @@ public class Portal : MonoBehaviour
     private Transform testTransform;
 
     private List<PortalableObject> portalObjects = new List<PortalableObject>();
-    public bool IsPlaced { get; private set; } = false;
+    private bool isPlaced = false;
     private Collider wallCollider;
-
+    private Material material;
+    private new Renderer renderer;
     // Components.
-    public Renderer Renderer { get; private set; }
     private new BoxCollider collider;
 
     private void Awake()
     {
         collider = GetComponent<BoxCollider>();
-        Renderer = GetComponent<Renderer>();
+        renderer = GetComponent<Renderer>();
+        material = renderer.material;
     }
 
     private void Start()
@@ -43,8 +44,6 @@ public class Portal : MonoBehaviour
 
     private void Update()
     {
-        Renderer.enabled = OtherPortal.IsPlaced;
-
         for (int i = 0; i < portalObjects.Count; ++i)
         {
             Vector3 objPos = transform.InverseTransformPoint(portalObjects[i].transform.position);
@@ -58,7 +57,9 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       
+        if (!OtherPortal.isPlaced)
+            return;
+
         var obj = other.GetComponent<PortalableObject>();
         if (obj != null)
         {
@@ -69,7 +70,6 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("exit");
         var obj = other.GetComponent<PortalableObject>();
 
         if (portalObjects.Contains(obj))
@@ -85,7 +85,7 @@ public class Portal : MonoBehaviour
         transform.position = pos;
         transform.rotation = rot;
         //placing the portal infornt of the wall (slightly) to avoid z-fighting
-        transform.position -= transform.forward*0.001f;
+        transform.position -= transform.forward * 0.010f;
         //preventeing the placing a portal in a wall intersection or on the edge of the wall such that the portal will look like floating(Overhang) 
         FixOverhangs();
         FixIntersects();
@@ -96,7 +96,7 @@ public class Portal : MonoBehaviour
             transform.rotation = testTransform.rotation;
 
             gameObject.SetActive(true);
-            IsPlaced = true;
+            isPlaced = true;
             return true;
         }
         return true;
@@ -106,7 +106,7 @@ public class Portal : MonoBehaviour
     {
         //checking maually if Overhang exists
         /*
-         * raycast from just behind the portal at each of its four edges, pointing inwards towards the portal’s centre
+         * raycast from just behind the portal at each of its four edges, pointing inwards towards the portalï¿½s centre
          * If the start point already intersects a wall fine the edge doesn't overhang
          * else we will try nudge the portal and prevent overhang
         */
@@ -132,11 +132,11 @@ public class Portal : MonoBehaviour
             Vector3 raycastPos = testTransform.TransformPoint(testPoints[i]);
             Vector3 raycastDir = testTransform.TransformDirection(testDirs[i]);
 
-            if(Physics.CheckSphere(raycastPos,0.05f,placementMask)) //checking if the starting point is already inside a wall collider
+            if (Physics.CheckSphere(raycastPos, 0.05f, placementMask)) //checking if the starting point is already inside a wall collider
             {
                 break;
             }
-            else if(Physics.Raycast(raycastPos,raycastDir,out hit,2.1f,placementMask))
+            else if (Physics.Raycast(raycastPos, raycastDir, out hit, 2.1f, placementMask))
             {
                 Vector3 offest = hit.point - raycastPos;
                 testTransform.Translate(offest, Space.World);
@@ -218,6 +218,22 @@ public class Portal : MonoBehaviour
     public void RemovePortal()
     {
         gameObject.SetActive(false);
-        IsPlaced = false;
+        isPlaced = false;
     }
+
+    public void SetMaskId(int id)
+    {
+        material.SetInt("_MaskID", id);
+    }
+
+    public bool IsRendererVisible()
+    {
+        return renderer.isVisible;
+    }
+
+    public bool IsPlaced()
+    {
+        return isPlaced;
+    }
+
 }
