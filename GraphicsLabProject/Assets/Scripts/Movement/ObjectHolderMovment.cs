@@ -9,7 +9,7 @@ public class ObjectHolderMovment : MonoBehaviour
     private float dist;
     void Start()
     {
-        cam = transform.parent.GetComponentInChildren<CameraMovement>();
+        
        
     }
 
@@ -17,8 +17,10 @@ public class ObjectHolderMovment : MonoBehaviour
     void Update()
     {
         PlayerMovement parent = GetComponentInParent<PlayerMovement>();
+        Debug.Log(parent);
         if(parent.GetIsControlled()==true)
         {
+            cam = transform.parent.GetComponentInChildren<CameraMovement>();
             dist = Vector3.Distance(cam.transform.position, transform.position);
             Vector3 holderPosition = cam.transform.position + -cam.GetDirection() * dist;
 
