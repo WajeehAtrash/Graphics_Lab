@@ -66,7 +66,6 @@ public class PortalableObject : MonoBehaviour
     {
         this.inPortal = inPortal;
         this.outPortal = outPortal;
-        Debug.Log(wallCollider);
         Physics.IgnoreCollision(collider, wallCollider);
 
         cloneObject.SetActive(true);
@@ -76,7 +75,6 @@ public class PortalableObject : MonoBehaviour
 
     public void ExitPortal(Collider wallCollider)
     {
-        Debug.Log(wallCollider);
         Physics.IgnoreCollision(collider, wallCollider, false);
         --inPortalCount;
 

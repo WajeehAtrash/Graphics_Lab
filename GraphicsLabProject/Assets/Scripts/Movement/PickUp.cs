@@ -52,8 +52,6 @@ public class PickUp : MonoBehaviour
             Rigidbody objRigidbody = pickObj.GetComponent<Rigidbody>();
             objRigidbody.useGravity = false;
             objRigidbody.drag = objectDrag;
-            Debug.Log(holdParent.parent);
-            Debug.Log(holdParent.transform.position);
             objRigidbody.transform.parent = holdParent;
             heldObj = pickObj;
             Pickupable obj = heldObj.GetComponent<Pickupable>();
