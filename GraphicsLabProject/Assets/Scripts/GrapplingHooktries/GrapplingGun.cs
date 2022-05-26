@@ -45,7 +45,6 @@ public class GrapplingGun : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance, GrappleLayer))
         {
-            Debug.Log("ground");
             grapplePoint = hit.point;
             //controlledPlayer.SetSpeed(15);
             joint = player.gameObject.AddComponent<SpringJoint>();
