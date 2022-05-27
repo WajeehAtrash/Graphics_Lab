@@ -42,11 +42,26 @@ public class GrapplingGun : MonoBehaviour
 
     void StartGrapple()//calling the function when clicking the right mouse button
     {
-        RaycastHit hit;
-        if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance, GrappleLayer))
+        RaycastHit hit,hitpickup;
+        if (Physics.Raycast(cam.position, cam.forward, out hitpickup, maxDistance, Pickup))
+        {
+            grapplePoint = hitpickup.point;
+            float distance = Vector3.Distance(player.position, grapplePoint);
+            Rigidbody rbPickup = hitpickup.transform.gameObject.GetComponent<Rigidbody>();
+            Vector3 normal = (player.position - grapplePoint).normalized;
+            Vector3 force = new Vector3(30 * normal.x, 30 * normal.y, 30 * normal.z);
+            rbPickup.AddForce(force, ForceMode.Impulse);
+            lr.positionCount = 2;
+            currentGrapplePosition = gunTip.position;
+            grappling = true;
+            pickupTranform = hitpickup.transform;
+            rbPickup.velocity = Vector3.zero;
+            rbPickup.angularVelocity = Vector3.zero;
+        }
+        else if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance, GrappleLayer))
         {
             grapplePoint = hit.point;
-            //controlledPlayer.SetSpeed(15);
+            controlledPlayer.SetSpeed(15);
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
             joint.connectedAnchor = grapplePoint;
@@ -54,32 +69,17 @@ public class GrapplingGun : MonoBehaviour
             float distanceFromPoint = Vector3.Distance(player.position, grapplePoint);
 
             //The distance grapple will try to keep from grapple point. 
-            joint.maxDistance = distanceFromPoint * 0.8f;
-            joint.minDistance = distanceFromPoint * 0.25f;
+            joint.maxDistance = distanceFromPoint * 0.5f;
+            joint.minDistance = distanceFromPoint * 0.3f;
 
-            joint.spring = 4.5f;
+            joint.spring = 5f;
             joint.damper = 3f;
             joint.massScale = 450f;
 
             lr.positionCount = 2;
             currentGrapplePosition = gunTip.position;
         }
-        else if (Physics.Raycast(cam.position, cam.forward, out hit, maxDistance, Pickup))
-        {
-            Debug.Log("pivkup");
-            grapplePoint = hit.point;
-            float distance = Vector3.Distance(player.position, grapplePoint);
-            Rigidbody rbPickup = hit.transform.gameObject.GetComponent<Rigidbody>();
-            Vector3 normal = (player.position - grapplePoint).normalized;
-            Vector3 force = new Vector3(30 * normal.x, 30 * normal.y, 30 * normal.z);
-            rbPickup.AddForce(force, ForceMode.Impulse);
-            lr.positionCount = 2;
-            currentGrapplePosition = gunTip.position;
-            grappling = true;
-            pickupTranform = hit.transform;
-            rbPickup.velocity = Vector3.zero;
-            rbPickup.angularVelocity = Vector3.zero;
-        }
+        
     }
 
 
@@ -89,6 +89,7 @@ public class GrapplingGun : MonoBehaviour
         lr.positionCount = 0;
         grappling = false;
         Destroy(joint);
+        controlledPlayer.SetSpeed(7);
     }
 
     private Vector3 currentGrapplePosition;

@@ -61,9 +61,9 @@ public class PlayerMovement : PortalableObject
            
             isControled = !isControled;
         }
-        if( horizontalInput.GetKeyDown(KeyCode.R))
+        if(Input.GetKeyDown(KeyCode.R))
         {
-          
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
     }

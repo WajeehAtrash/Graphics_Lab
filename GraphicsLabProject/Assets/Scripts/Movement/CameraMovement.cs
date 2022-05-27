@@ -12,7 +12,8 @@ public class CameraMovement : MonoBehaviour
     private const float cameraSpeed = 3.0f;
     private Rigidbody rBody;
     public Quaternion TargetRotation { private set; get; }
-
+    [SerializeField] private crosshair portalCrosshair;
+    [SerializeField] private crosshair grappleCrosshair;
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;//locking the cursor into the middle of the screen
@@ -26,6 +27,7 @@ public class CameraMovement : MonoBehaviour
         if (transform.parent.name.Equals("playerB"))
         {
             transform.GetComponent<PortalPlacement>().enabled = true;
+            portalCrosshair.gameObject.SetActive(true);
         }
     }
 
@@ -54,17 +56,23 @@ public class CameraMovement : MonoBehaviour
 
     void SwapPlayers()//Todo: change grappler gun parameters so the effect will take place on the seconed player or disable it
     {
- 
+        
         CameraMovement cam = GetComponentInChildren<CameraMovement>();
-        if(cam==null)
-        {
-            Debug.Log("camera is null");
-        }
         cam.transform.SetParent(unControledPlayer);
         cam.transform.localPosition = new Vector3(0, 1, 0);
         Transform temp = controledPlayer;
         controledPlayer = unControledPlayer;
         unControledPlayer = temp;
+        if (transform.parent.name.Equals("playerB"))
+        {
+            portalCrosshair.gameObject.SetActive(true);
+            grappleCrosshair.gameObject.SetActive(false);
+        }
+        else
+        {
+            portalCrosshair.gameObject.SetActive(false);
+            grappleCrosshair.gameObject.SetActive(true);
+        }
     }
  
     public Quaternion GetRotation()
@@ -89,18 +97,21 @@ public class CameraMovement : MonoBehaviour
         if (transform.parent.name.Equals("playerA"))
         {
             transform.GetComponent<PortalPlacement>().enabled = false;
-
+            portalCrosshair.gameObject.SetActive(false);
             if (GrapplingGun != null)
             {
+                grappleCrosshair.gameObject.SetActive(true);
                 GrapplingGun.SetActive( true);
             }
         }
         if (transform.parent.name.Equals("playerB"))
         {
             transform.GetComponent<PortalPlacement>().enabled = true;
+            portalCrosshair.gameObject.SetActive(true);
             if (GrapplingGun != null)
             {
                 GrapplingGun.SetActive (false);
+                grappleCrosshair.gameObject.SetActive(false);
             }
         }
     }

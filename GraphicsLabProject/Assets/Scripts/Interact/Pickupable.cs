@@ -20,7 +20,6 @@ public class Pickupable : MonoBehaviour, IInteractble
 
     void IInteractble.OnStartHover()
     {
-        Debug.Log("1");
         if (interacting == false)
         {
             text.SetActive(true);
