@@ -42,6 +42,7 @@ public class PortalPlacement : MonoBehaviour
             //----------------------------------------------------------------------------------------------------
             //calculating the right direction for the portal
             var cameraRotation = cameraMove.GetRotation();
+            //var cameraRotation = cameraMove.TargetRotation;
             var portalRight = cameraRotation * Vector3.right; //geting the player right direction
             //rounding the vector to the nearest 90 degree by comparing  it's x and z components
             if(Mathf.Abs(portalRight.x)>=Mathf.Abs(portalRight.z))

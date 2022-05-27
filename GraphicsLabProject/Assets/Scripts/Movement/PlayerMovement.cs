@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : PortalableObject
 {
@@ -59,6 +60,10 @@ public class PlayerMovement : PortalableObject
         {
            
             isControled = !isControled;
+        }
+        if( horizontalInput.GetKeyDown(KeyCode.R))
+        {
+          
         }
 
     }
