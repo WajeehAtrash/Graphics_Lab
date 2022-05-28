@@ -10,6 +10,7 @@ public class PlayerMovement : PortalableObject
     [SerializeField] Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private GameObject player;
+    //[SerializeField] private GameObject pauseMenu;
     private Rigidbody rBody;
     private float horizontalInput;
     private float verticalInput;
@@ -64,6 +65,10 @@ public class PlayerMovement : PortalableObject
         if(Input.GetKeyDown(KeyCode.R))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            //TODO:add Pause menu
         }
 
     }

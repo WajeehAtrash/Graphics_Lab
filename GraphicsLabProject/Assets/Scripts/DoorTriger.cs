@@ -13,6 +13,7 @@ public class DoorTriger : MonoBehaviour
         if(!isOpened)
         {
             door.transform.position += new Vector3(0, 10, 0);
+            isOpened = true;
             text.SetActive(false);
         }
     }
