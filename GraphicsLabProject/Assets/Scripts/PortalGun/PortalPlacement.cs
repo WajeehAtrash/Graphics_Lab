@@ -10,6 +10,7 @@ public class PortalPlacement : MonoBehaviour
     [SerializeField]
     private LayerMask layerMask;
 
+
     [SerializeField]
     private PortalGunCrosshair crosshair;
 

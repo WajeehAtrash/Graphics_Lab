@@ -27,7 +27,7 @@ public class Portal : MonoBehaviour
     private new Renderer renderer;
     // Components.
     private new BoxCollider collider;
-
+    private static GameObject Gun;
     private void Awake()
     {
         collider = GetComponent<BoxCollider>();
@@ -57,6 +57,11 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if(other.name.Equals("Gun"))
+        {
+            Gun = other.gameObject;
+            other.gameObject.SetActive(false);
+        }
         if (!OtherPortal.isPlaced)
             return;
 
@@ -76,6 +81,10 @@ public class Portal : MonoBehaviour
         {
             portalObjects.Remove(obj);
             obj.ExitPortal(wallCollider);
+        }
+        if(other.name.Equals("playerA"))
+        {
+            Gun.SetActive(true);
         }
     }
 

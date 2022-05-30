@@ -41,7 +41,7 @@ public class CameraMovement : MonoBehaviour
             targetEuler.x -= 360.0f;
         }
 
-        targetEuler.x = Mathf.Clamp(targetEuler.x, -75.0f, 75.0f);
+        targetEuler.x = Mathf.Clamp(targetEuler.x, -90.0f, 90.0f);
         TargetRotation = Quaternion.Euler(targetEuler);
 
         transform.rotation = Quaternion.Slerp(transform.rotation, TargetRotation,Time.deltaTime * 15.0f);

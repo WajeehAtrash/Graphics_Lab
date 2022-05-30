@@ -39,7 +39,7 @@ public class GrapplingGun : MonoBehaviour
         DrawRope();
     }
 
-
+   
     void StartGrapple()//calling the function when clicking the right mouse button
     {
         RaycastHit hit,hitpickup;
@@ -70,11 +70,11 @@ public class GrapplingGun : MonoBehaviour
 
             //The distance grapple will try to keep from grapple point. 
             joint.maxDistance = distanceFromPoint * 0.5f;
-            joint.minDistance = distanceFromPoint * 0.3f;
+            joint.minDistance = distanceFromPoint * 0.1f;
 
-            joint.spring = 5f;
-            joint.damper = 3f;
-            joint.massScale = 450f;
+            joint.spring = 3f;
+            joint.damper = 5f;
+            joint.massScale = 100f;
 
             lr.positionCount = 2;
             currentGrapplePosition = gunTip.position;

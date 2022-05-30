@@ -156,7 +156,7 @@ MonoBehaviour:
   groundCheck: {fileID: 4784463658742564708}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 640
   player: {fileID: 4784463658287551741}
 --- !u!1 &4784463658742564709
 GameObject:
