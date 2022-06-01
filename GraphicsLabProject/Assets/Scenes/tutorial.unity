@@ -1741,6 +1741,10 @@ PrefabInstance:
       propertyPath: text
       value: 
       objectReference: {fileID: 5690194014865998204}
+    - target: {fileID: 5537273964159016501, guid: 533a4b192a4c4b44f8ed11dea542c448, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e6b9b44320f4448d9d5e0ee634259966, type: 2}
     - target: {fileID: 5833692341595816980, guid: 533a4b192a4c4b44f8ed11dea542c448, type: 3}
       propertyPath: m_Name
       value: Cube
@@ -2344,7 +2348,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh73472
+  m_Name: pb_Mesh30872
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2

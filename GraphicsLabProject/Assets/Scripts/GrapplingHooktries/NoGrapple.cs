@@ -14,7 +14,7 @@ public class NoGrapple : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("exit");
+        
         GrapplingGun gGun = other.gameObject.GetComponent<GrapplingGun>();
         if (gGun != null)
         {

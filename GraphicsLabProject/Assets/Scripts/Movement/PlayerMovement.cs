@@ -16,6 +16,7 @@ public class PlayerMovement : PortalableObject
     private CapsuleCollider capsuleCollider;
     private bool isControled = true;
     private CameraMovement cam;
+    private bool noPortal = false;
 
     protected override void Awake()
     {
@@ -85,5 +86,13 @@ public class PlayerMovement : PortalableObject
     public void SetSpeed(float speed)
     {
         this.speed = speed;
+    }
+    public void SetNoPortal(bool val)
+    {
+        this.noPortal = val;
+    }
+    public bool GetNoPortal()
+    {
+        return this.noPortal;
     }
 }

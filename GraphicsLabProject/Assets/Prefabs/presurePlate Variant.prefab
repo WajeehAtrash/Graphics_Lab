@@ -58,10 +58,10 @@ PrefabInstance:
     - target: {fileID: 4749957628395680323, guid: 8be28a982093a494d88ddba64e4ff00f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: c0b992dc4a185a246871e9c130b897c8, type: 2}
+      objectReference: {fileID: 2100000, guid: 7f05d1ae3dc4a2f4ab4a43f88e20030e, type: 2}
     - target: {fileID: 4749957628395680381, guid: 8be28a982093a494d88ddba64e4ff00f, type: 3}
       propertyPath: m_Name
-      value: presurePlate
+      value: presurePlate Variant
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4749957628395680320, guid: 8be28a982093a494d88ddba64e4ff00f, type: 3}

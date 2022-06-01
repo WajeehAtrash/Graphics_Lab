@@ -57,14 +57,15 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.name.Equals("Gun"))
+       
+        if (!OtherPortal.isPlaced)
+            return;
+
+        if (other.name.Equals("Gun"))
         {
             Gun = other.gameObject;
             other.gameObject.SetActive(false);
         }
-        if (!OtherPortal.isPlaced)
-            return;
-
         var obj = other.GetComponent<PortalableObject>();
         if (obj != null)
         {
@@ -82,7 +83,7 @@ public class Portal : MonoBehaviour
             portalObjects.Remove(obj);
             obj.ExitPortal(wallCollider);
         }
-        if(other.name.Equals("playerA"))
+        if (other.name.Equals("playerA"))
         {
             Gun.SetActive(true);
         }

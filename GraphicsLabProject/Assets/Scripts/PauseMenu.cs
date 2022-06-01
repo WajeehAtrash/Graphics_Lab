@@ -43,7 +43,8 @@ public class PauseMenu : MonoBehaviour
     public void Next()
     {
         int nextLevelIndx = SceneManager.GetActiveScene().buildIndex + 1;
-        if (nextLevelIndx < SceneManager.sceneCount)
+        Debug.Log("change it");
+        if (nextLevelIndx <= 2)
         {
             SceneManager.LoadScene(nextLevelIndx);
         }
@@ -54,7 +55,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void Prev()
     {
-        int prevLevelIndx = SceneManager.GetActiveScene().buildIndex + 1;
+        int prevLevelIndx = SceneManager.GetActiveScene().buildIndex -1;
         if (prevLevelIndx > 0)
         {
             SceneManager.LoadScene(prevLevelIndx);

@@ -20,6 +20,7 @@ public class CameraMovement : MonoBehaviour
         TargetRotation = transform.rotation;
         rBody = GetComponentInParent<Rigidbody>();
         SetupPlayers();
+      
     }
 
     void Start()
@@ -106,7 +107,13 @@ public class CameraMovement : MonoBehaviour
         }
         if (transform.parent.name.Equals("playerB"))
         {
-            transform.GetComponent<PortalPlacement>().enabled = true;
+            Debug.Log(transform.parent.GetComponent<PlayerMovement>().GetNoPortal());
+            if(transform.parent.GetComponent<PlayerMovement>().GetNoPortal()==false)
+                transform.GetComponent<PortalPlacement>().enabled = true;
+            else
+            {
+                transform.GetComponent<PortalPlacement>().enabled = false;
+            }
             portalCrosshair.gameObject.SetActive(true);
             if (GrapplingGun != null)
             {
