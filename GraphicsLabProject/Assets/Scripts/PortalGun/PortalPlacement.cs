@@ -9,6 +9,8 @@ public class PortalPlacement : MonoBehaviour
 
     [SerializeField]
     private LayerMask layerMask;
+    [SerializeField]
+    private LayerMask NoPortal;
 
 
     [SerializeField]
@@ -35,9 +37,15 @@ public class PortalPlacement : MonoBehaviour
 
     private void FirePortal(int portalID, Vector3 pos, Vector3 dir, float distance)
     {
-        RaycastHit hit;
+        RaycastHit hit,noPortalhit;
         Physics.Raycast(pos, dir, out hit, 250.0f, layerMask);
-        if(hit.collider!=null)
+        Physics.Raycast(pos, dir, out noPortalhit, 250.0f, NoPortal);
+        if (noPortalhit.collider != null)
+        {
+            Debug.Log(noPortalhit.collider.name);
+            Debug.Log("noportal");
+        }
+        else if (hit.collider!=null)
         {
             //placing the portal according to camera look and surface direction
             //----------------------------------------------------------------------------------------------------
@@ -72,6 +80,7 @@ public class PortalPlacement : MonoBehaviour
 
             crosshair.SetPortalPlaced(portalID,true );
         }
+        
     }
 
 }

@@ -9,21 +9,25 @@ public class ObjectHolderMovment : MonoBehaviour
     private float dist;
     void Start()
     {
-        
-       
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
         PlayerMovement parent = GetComponentInParent<PlayerMovement>();
-        if(parent.GetIsControlled()==true)
+        if (parent.GetIsControlled() == true)
         {
             cam = transform.parent.GetComponentInChildren<CameraMovement>();
-            dist = Vector3.Distance(cam.transform.position, transform.position);
-            Vector3 holderPosition = cam.transform.position + cam.transform.forward * dist;
+            if (cam != null)
+            {
+                dist = Vector3.Distance(cam.transform.position, transform.position);
+                Vector3 holderPosition = cam.transform.position + cam.transform.forward * dist;
 
-            transform.position = holderPosition;
+                transform.position = holderPosition;
+
+            }
         }
     }
 }

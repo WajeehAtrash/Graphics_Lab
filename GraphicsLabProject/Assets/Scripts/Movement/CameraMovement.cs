@@ -107,7 +107,6 @@ public class CameraMovement : MonoBehaviour
         }
         if (transform.parent.name.Equals("playerB"))
         {
-            Debug.Log(transform.parent.GetComponent<PlayerMovement>().GetNoPortal());
             if(transform.parent.GetComponent<PlayerMovement>().GetNoPortal()==false)
                 transform.GetComponent<PortalPlacement>().enabled = true;
             else
