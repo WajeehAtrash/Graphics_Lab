@@ -44,7 +44,7 @@ public class PauseMenu : MonoBehaviour
     {
         int nextLevelIndx = SceneManager.GetActiveScene().buildIndex + 1;
         Debug.Log("change it");
-        if (nextLevelIndx <= 2)
+        if (nextLevelIndx <= 3)
         {
             SceneManager.LoadScene(nextLevelIndx);
         }

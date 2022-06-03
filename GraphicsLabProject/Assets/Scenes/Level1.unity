@@ -2133,10 +2133,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 133660325}
     - target: {fileID: 4974819219304491048, guid: faa86d12eb61f0d4390b7d419a627906, type: 3}
-      propertyPath: NoPortal.m_Bits
-      value: 1025
-      objectReference: {fileID: 0}
-    - target: {fileID: 4974819219304491048, guid: faa86d12eb61f0d4390b7d419a627906, type: 3}
       propertyPath: noPortal.m_Bits
       value: 1024
       objectReference: {fileID: 0}

@@ -331,6 +331,9 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 128
+  NoPortal:
+    serializedVersion: 2
+    m_Bits: 1025
   crosshair: {fileID: 0}
 --- !u!114 &4974819219304491061
 MonoBehaviour:
