@@ -17,11 +17,17 @@ public class HaveyDoor : MonoBehaviour
     void Update()
     {
         Vector3 pos = transform.position;
-        pos.y += 25;
         if(p1.GetIsPressed()&&p2.GetIsPressed()&&!isOpened)
         {
+            pos.y += 25;
             transform.position = pos;
             isOpened = true;
+        }
+        else if(isOpened&&(!p1.GetIsPressed()||!p2.GetIsPressed()))
+        {
+            pos.y -= 25;
+            transform.position = pos;
+            isOpened = false;
         }
     }
 }

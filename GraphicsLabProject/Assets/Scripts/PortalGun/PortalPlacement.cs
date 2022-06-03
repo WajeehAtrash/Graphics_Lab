@@ -42,8 +42,6 @@ public class PortalPlacement : MonoBehaviour
         Physics.Raycast(pos, dir, out noPortalhit, 250.0f, NoPortal);
         if (noPortalhit.collider != null)
         {
-            Debug.Log(noPortalhit.collider.name);
-            Debug.Log("noportal");
         }
         else if (hit.collider!=null)
         {

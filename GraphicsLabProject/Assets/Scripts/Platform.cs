@@ -14,7 +14,6 @@ public class Platform : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("collide");
         platform.SetActive(true);
         platform.transform.position = platformLoc;
     }

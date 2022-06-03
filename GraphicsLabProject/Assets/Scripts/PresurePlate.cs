@@ -11,11 +11,13 @@ public class PresurePlate : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("enter pre");
         isPressed = true;
     }
 
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("exit pre");
         isPressed = false;
     }
 }

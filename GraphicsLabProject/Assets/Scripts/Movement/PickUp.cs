@@ -51,7 +51,7 @@ public class PickUp : MonoBehaviour
         {
             Rigidbody objRigidbody = pickObj.GetComponent<Rigidbody>();
             objRigidbody.useGravity = false;
-            pickObj.GetComponent<Collider>().enabled = false;
+            //pickObj.GetComponent<Collider>().enabled = false;
             objRigidbody.drag = objectDrag;
             objRigidbody.transform.parent = holdParent;
             heldObj = pickObj;
@@ -64,7 +64,7 @@ public class PickUp : MonoBehaviour
         Rigidbody rBody = heldObj.GetComponent<Rigidbody>();
         rBody.useGravity = true;
         rBody.drag = 1;
-        rBody.gameObject.GetComponent<Collider>().enabled = true;
+        //rBody.gameObject.GetComponent<Collider>().enabled = true;
         Pickupable obj = heldObj.GetComponent<Pickupable>();
         obj.SetInteracting(false);
         heldObj.transform.parent = null;
