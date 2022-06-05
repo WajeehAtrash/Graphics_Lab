@@ -14,8 +14,8 @@ TagManager:
   - PickUps
   - Ground
   - Portal
-  - 
-  - 
+  - Jumpable
+  - NoPortal
   - 
   - 
   - 
@@ -40,4 +40,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: NoPortals
+    uniqueID: 4216282499
     locked: 0

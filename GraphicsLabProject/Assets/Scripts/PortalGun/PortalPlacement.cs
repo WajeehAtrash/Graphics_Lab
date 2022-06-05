@@ -9,9 +9,12 @@ public class PortalPlacement : MonoBehaviour
 
     [SerializeField]
     private LayerMask layerMask;
+    [SerializeField]
+    private LayerMask NoPortal;
 
-    //[SerializeField]
-    //private Crosshair crosshair;
+
+    [SerializeField]
+    private PortalGunCrosshair crosshair;
 
     private CameraMovement cameraMove;
 
@@ -34,14 +37,19 @@ public class PortalPlacement : MonoBehaviour
 
     private void FirePortal(int portalID, Vector3 pos, Vector3 dir, float distance)
     {
-        RaycastHit hit;
+        RaycastHit hit,noPortalhit;
         Physics.Raycast(pos, dir, out hit, 250.0f, layerMask);
-        if(hit.collider!=null)
+        Physics.Raycast(pos, dir, out noPortalhit, 250.0f, NoPortal);
+        if (noPortalhit.collider != null)
+        {
+        }
+        else if (hit.collider!=null)
         {
             //placing the portal according to camera look and surface direction
             //----------------------------------------------------------------------------------------------------
             //calculating the right direction for the portal
             var cameraRotation = cameraMove.GetRotation();
+            //var cameraRotation = cameraMove.TargetRotation;
             var portalRight = cameraRotation * Vector3.right; //geting the player right direction
             //rounding the vector to the nearest 90 degree by comparing  it's x and z components
             if(Mathf.Abs(portalRight.x)>=Mathf.Abs(portalRight.z))
@@ -67,7 +75,10 @@ public class PortalPlacement : MonoBehaviour
 
             // Attempt to place the portal.
             portals.Portals[portalID].PlacePortal(hit.collider, hit.point, portalRotation);
+
+            crosshair.SetPortalPlaced(portalID,true );
         }
+        
     }
 
 }

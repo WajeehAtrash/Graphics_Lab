@@ -27,11 +27,6 @@ public class PortalCamera : MonoBehaviour
         //so the portals will not interfere with one another while rendering
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
     {
