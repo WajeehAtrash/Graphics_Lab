@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : PortalableObject
 {
@@ -15,6 +16,7 @@ public class PlayerMovement : PortalableObject
     private CapsuleCollider capsuleCollider;
     private bool isControled = true;
     private CameraMovement cam;
+    private bool noPortal = false;
 
     protected override void Awake()
     {
@@ -36,6 +38,7 @@ public class PlayerMovement : PortalableObject
         capsuleCollider = GetComponent<CapsuleCollider>();
         if (player.name == "playerB")
             isControled = false;
+        
     }
 
     // Update is called once per frame
@@ -60,6 +63,10 @@ public class PlayerMovement : PortalableObject
            
             isControled = !isControled;
         }
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
 
     }
 
@@ -79,5 +86,13 @@ public class PlayerMovement : PortalableObject
     public void SetSpeed(float speed)
     {
         this.speed = speed;
+    }
+    public void SetNoPortal(bool val)
+    {
+        this.noPortal = val;
+    }
+    public bool GetNoPortal()
+    {
+        return this.noPortal;
     }
 }
