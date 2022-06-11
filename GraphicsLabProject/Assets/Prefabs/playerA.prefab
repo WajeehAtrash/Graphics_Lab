@@ -143,7 +143,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4974819218244262655}
-  m_Material: {fileID: 13400000, guid: ee1bc0dcc2b8df54aa657e6331ed855b, type: 2}
+  m_Material: {fileID: 13400000, guid: 98a0e697ecd198744a1710316c90ff0b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5000001
@@ -297,7 +297,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fd6e8741cedb694ababece20361b9be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  place: {fileID: 0}
   controledPlayer: {fileID: 4974819218901477679}
   unControledPlayer: {fileID: 0}
   portalCrosshair: {fileID: 0}
@@ -439,8 +438,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4974819218992590036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4974819219039825114}
@@ -504,7 +503,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4974819218992590036}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 98a0e697ecd198744a1710316c90ff0b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

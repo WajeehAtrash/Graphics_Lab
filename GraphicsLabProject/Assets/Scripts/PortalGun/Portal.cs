@@ -60,7 +60,7 @@ public class Portal : MonoBehaviour
        
         if (!OtherPortal.isPlaced)
             return;
-
+        //the collider for the gun is removed for now so there is no need for this code
         if (other.name.Equals("Gun"))
         {
             Gun = other.gameObject;
@@ -83,6 +83,7 @@ public class Portal : MonoBehaviour
             portalObjects.Remove(obj);
             obj.ExitPortal(wallCollider);
         }
+        //the collider for the gun is removed for now so there is no need for this code
         if (other.name.Equals("playerA"))
         {
             Gun.SetActive(true);
