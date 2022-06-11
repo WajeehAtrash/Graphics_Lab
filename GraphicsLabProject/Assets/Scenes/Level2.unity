@@ -28474,6 +28474,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: PortlaPair
       objectReference: {fileID: 0}
+    - target: {fileID: 8230075709029323587, guid: 7cfa05fb087d26a498c3676fc8bb9b89, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 876cc1633e30f064da37f1a1244a53f5, type: 2}
+    - target: {fileID: 8230075709785740714, guid: 7cfa05fb087d26a498c3676fc8bb9b89, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 876cc1633e30f064da37f1a1244a53f5, type: 2}
+    - target: {fileID: 8230075709819401561, guid: 7cfa05fb087d26a498c3676fc8bb9b89, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 876cc1633e30f064da37f1a1244a53f5, type: 2}
+    - target: {fileID: 8230075710423706043, guid: 7cfa05fb087d26a498c3676fc8bb9b89, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 876cc1633e30f064da37f1a1244a53f5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cfa05fb087d26a498c3676fc8bb9b89, type: 3}
 --- !u!114 &1313131175 stripped
@@ -33714,11 +33730,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534987731718514698, guid: 91eba6be520456946be1b4b6ee93ad57, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4534987731718514698, guid: 91eba6be520456946be1b4b6ee93ad57, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4534987731718514698, guid: 91eba6be520456946be1b4b6ee93ad57, type: 3}
       propertyPath: m_LocalPosition.x

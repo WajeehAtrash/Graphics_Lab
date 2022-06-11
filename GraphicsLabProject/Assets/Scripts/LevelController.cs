@@ -14,7 +14,7 @@ public class LevelController : MonoBehaviour
         if (f1.GetIsOnFinish() && f2.GetIsOnFinish())
         {
             int lvlIndex = SceneManager.GetActiveScene().buildIndex;
-            if (lvlIndex < 3)
+            if (lvlIndex < 4)
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             else
                 SceneManager.LoadScene(0);
