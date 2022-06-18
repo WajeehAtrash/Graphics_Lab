@@ -61,11 +61,11 @@ public class Portal : MonoBehaviour
         if (!OtherPortal.isPlaced)
             return;
         //the collider for the gun is removed for now so there is no need for this code
-        if (other.name.Equals("Gun"))
-        {
-            Gun = other.gameObject;
-            other.gameObject.SetActive(false);
-        }
+        //if (other.name.Equals("Gun"))
+        //{
+        //    Gun = other.gameObject;
+        //    other.gameObject.SetActive(false);
+        //}
         var obj = other.GetComponent<PortalableObject>();
         if (obj != null)
         {
@@ -84,10 +84,10 @@ public class Portal : MonoBehaviour
             obj.ExitPortal(wallCollider);
         }
         //the collider for the gun is removed for now so there is no need for this code
-        if (other.name.Equals("playerA"))
-        {
-            Gun.SetActive(true);
-        }
+        //if (other.name.Equals("playerA"))
+        //{
+        //    Gun.SetActive(true);
+        //}
     }
 
     public bool PlacePortal(Collider wallCollider, Vector3 pos, Quaternion rot)

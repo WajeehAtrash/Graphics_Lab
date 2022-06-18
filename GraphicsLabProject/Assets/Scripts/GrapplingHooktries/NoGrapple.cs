@@ -6,19 +6,26 @@ public class NoGrapple : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        GrapplingGun gGun = other.gameObject.GetComponent<GrapplingGun>();
-        if(gGun!=null)
+       
+        if(other.name.Equals("playerA"))
         {
-            other.gameObject.GetComponent<GrapplingGun>().enabled = false;
+            GrapplingGun gGun = other.gameObject.GetComponentInChildren<GrapplingGun>();
+            if (gGun != null)
+            {
+                other.gameObject.GetComponentInChildren<GrapplingGun>().enabled = false;
+            }
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        
-        GrapplingGun gGun = other.gameObject.GetComponent<GrapplingGun>();
-        if (gGun != null)
+
+        if (other.name.Equals("playerA"))
         {
-            other.gameObject.GetComponent<GrapplingGun>().enabled = true;
+            GrapplingGun gGun = other.gameObject.GetComponentInChildren<GrapplingGun>();
+            if (gGun != null)
+            {
+                other.gameObject.GetComponentInChildren<GrapplingGun>().enabled = true;
+            }
         }
     }
 }

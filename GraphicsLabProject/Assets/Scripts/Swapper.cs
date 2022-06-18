@@ -4,41 +4,54 @@ using UnityEngine;
 
 public class Swapper : MonoBehaviour
 {
+    public enum state
+    {
+        Idle,
+        Ready,
+        Off
+    }
     private PlayerMovement player;
     [SerializeField] Swapper seconedSwapper;
     [SerializeField] private bool isAdmin;
-    private bool ready = false;
+    private state swapperState = state.Idle;
     public PlayerMovement GetPlayer()
     {
         return player;
     }
-    public bool GetReady()
+    public void SetState(state state)
     {
-        return ready;
+        this.swapperState = state;
+    }
+    public state GetReady()
+    {
+        return (swapperState);
     }
     private void OnCollisionEnter(Collision collision)
     {
         player = collision.gameObject.GetComponent<PlayerMovement>();
         if (player != null)
         {
-            ready = true;
-            if (seconedSwapper.GetReady())
-            {
-                PlayerMovement player2 = seconedSwapper.GetPlayer();
-                Vector3 temp = player2.transform.position;
-                player2.transform.position = player.transform.position;
-                player.transform.position = temp;
-                ready = false;
-            }
-        }
-        else
-        {
-            ready = false;
+            swapperState = state.Ready;
         }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        ready = false;
+        swapperState = state.Idle;
+    }
+    private void Update()
+    {
+        if(isAdmin==true)
+        {
+            if(swapperState==state.Ready&& seconedSwapper.GetReady()==state.Ready)
+            {
+                PlayerMovement player2 = seconedSwapper.GetPlayer();
+                Vector3 temp = player2.transform.position;
+                player2.transform.position = player.transform.position;
+                player.transform.position = temp;
+                swapperState = state.Off;
+                seconedSwapper.SetState(state.Off);
+            }
+        }
     }
 }

@@ -27,7 +27,8 @@ public class PlayerMovement : PortalableObject
     public override void Warp()
     {
         base.Warp();
-        cam.ResetRotation();
+        if(cam!=null)
+            cam.ResetRotation();
         transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
