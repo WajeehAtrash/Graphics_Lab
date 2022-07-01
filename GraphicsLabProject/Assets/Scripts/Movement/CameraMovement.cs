@@ -13,6 +13,8 @@ public class CameraMovement : MonoBehaviour
     public Quaternion TargetRotation { private set; get; }
     [SerializeField] private crosshair portalCrosshair;
     [SerializeField] private crosshair grappleCrosshair;
+    PhysicMaterial nofriction = new PhysicMaterial();
+    PhysicMaterial friction = new PhysicMaterial();
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;//locking the cursor into the middle of the screen
@@ -29,6 +31,11 @@ public class CameraMovement : MonoBehaviour
             transform.GetComponent<PortalPlacement>().enabled = true;
             portalCrosshair.gameObject.SetActive(true);
         }
+        nofriction.staticFriction = 0;
+        nofriction.dynamicFriction = 0;
+
+        nofriction.staticFriction = 0.5f;
+        nofriction.dynamicFriction = 0.3f;
     }
 
     // Update is called once per frame
@@ -56,6 +63,7 @@ public class CameraMovement : MonoBehaviour
 
     void SwapPlayers()//Todo: change grappler gun parameters so the effect will take place on the seconed player or disable it
     {
+       
         
         CameraMovement cam = GetComponentInChildren<CameraMovement>();
         cam.transform.SetParent(unControledPlayer);
@@ -73,6 +81,8 @@ public class CameraMovement : MonoBehaviour
             portalCrosshair.gameObject.SetActive(false);
             grappleCrosshair.gameObject.SetActive(true);
         }
+        controledPlayer.GetComponent<Collider>().material = nofriction;
+        unControledPlayer.GetComponent<Collider>().material = friction;
     }
  
     public Quaternion GetRotation()

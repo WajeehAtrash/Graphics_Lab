@@ -60,12 +60,6 @@ public class Portal : MonoBehaviour
        
         if (!OtherPortal.isPlaced)
             return;
-        //the collider for the gun is removed for now so there is no need for this code
-        //if (other.name.Equals("Gun"))
-        //{
-        //    Gun = other.gameObject;
-        //    other.gameObject.SetActive(false);
-        //}
         var obj = other.GetComponent<PortalableObject>();
         if (obj != null)
         {
