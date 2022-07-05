@@ -13,8 +13,8 @@ public class CameraMovement : MonoBehaviour
     public Quaternion TargetRotation { private set; get; }
     [SerializeField] private crosshair portalCrosshair;
     [SerializeField] private crosshair grappleCrosshair;
-    PhysicMaterial nofriction = new PhysicMaterial();
-    PhysicMaterial friction = new PhysicMaterial();
+    PhysicMaterial nofriction;
+    PhysicMaterial friction;
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;//locking the cursor into the middle of the screen
@@ -26,6 +26,8 @@ public class CameraMovement : MonoBehaviour
 
     void Start()
     {
+        nofriction = new PhysicMaterial();
+        friction = new PhysicMaterial();
         if (transform.parent.name.Equals("playerB"))
         {
             transform.GetComponent<PortalPlacement>().enabled = true;

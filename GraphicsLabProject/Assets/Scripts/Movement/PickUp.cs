@@ -68,10 +68,6 @@ public class PickUp : MonoBehaviour
     public void DropObject()
     {
         PortalableObject portalObject = heldObj.GetComponent<PortalableObject>();
-        //if (portalObject != null)
-        //{
-        //    heldObj.GetComponent<PortalableObject>().enabled = true;
-        //}
         Rigidbody rBody = heldObj.GetComponent<Rigidbody>();
         rBody.useGravity = true;
         rBody.drag = 1;

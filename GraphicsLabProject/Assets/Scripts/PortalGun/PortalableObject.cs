@@ -66,14 +66,22 @@ public class PortalableObject : MonoBehaviour
     {
         this.inPortal = inPortal;
         this.outPortal = outPortal;
-        Physics.IgnoreCollision(collider, wallCollider);
-        //Pickupable pickupable = transform.GetComponent<Pickupable>();
-        //if (pickupable != null)
-        //{
-        //    PickUp player = pickupable.GetComponentInParent<PickUp>();
-        //    if (player != null)
-        //        player.DropObject();
-        //}
+        if(transform.tag.Equals("Player"))
+        {
+            PlayerMovement pM = transform.GetComponent<PlayerMovement>();
+            
+            if(!(inPortal.GetForwardNormal().Equals(new Vector3(1.00f, 0.00f, 0.00f))&&pM.IsGrounded()))
+            {
+                Physics.IgnoreCollision(collider, wallCollider);
+            }
+            else
+            {
+                pM.ApplyVerticalForce(0.7f);
+                Physics.IgnoreCollision(collider, wallCollider);
+            }
+        }
+        else
+            Physics.IgnoreCollision(collider, wallCollider);
         cloneObject.SetActive(true);
 
         ++inPortalCount;
