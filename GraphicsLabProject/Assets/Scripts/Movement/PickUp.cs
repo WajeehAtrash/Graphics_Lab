@@ -50,8 +50,14 @@ public class PickUp : MonoBehaviour
         if (pickObj.GetComponent<Rigidbody>())
         {
             Rigidbody objRigidbody = pickObj.GetComponent<Rigidbody>();
+            PortalableObject portalObject = pickObj.GetComponent<PortalableObject>();
+            //if(portalObject!=null)
+            //{
+            //    pickObj.GetComponent<PortalableObject>().enabled = false;
+            //}
             objRigidbody.useGravity = false;
-            //pickObj.GetComponent<Collider>().enabled = false;
+            objRigidbody.drag = 10;
+            objRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
             objRigidbody.drag = objectDrag;
             objRigidbody.transform.parent = holdParent;
             heldObj = pickObj;
@@ -59,12 +65,13 @@ public class PickUp : MonoBehaviour
             obj.SetInteracting(true);
         }
     }
-    void DropObject()
+    public void DropObject()
     {
+        PortalableObject portalObject = heldObj.GetComponent<PortalableObject>();
         Rigidbody rBody = heldObj.GetComponent<Rigidbody>();
         rBody.useGravity = true;
         rBody.drag = 1;
-        //rBody.gameObject.GetComponent<Collider>().enabled = true;
+        rBody.constraints = RigidbodyConstraints.None;
         Pickupable obj = heldObj.GetComponent<Pickupable>();
         obj.SetInteracting(false);
         heldObj.transform.parent = null;

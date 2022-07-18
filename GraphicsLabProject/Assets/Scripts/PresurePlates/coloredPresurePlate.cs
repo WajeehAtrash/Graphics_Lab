@@ -14,10 +14,7 @@ public class coloredPresurePlate : MonoBehaviour
         {
             isPressed = true;
         }
-        else
-        {
-            isPressed = false;
-        }
+
     }
 
     public bool GetIsPressed()
@@ -27,7 +24,9 @@ public class coloredPresurePlate : MonoBehaviour
 
     protected void OnTriggerExit(Collider other)
     {
-
-        isPressed = false;
+        if (other.gameObject.Equals(cube))
+        {
+            isPressed = false;
+        }
     }
 }

@@ -7,7 +7,8 @@ public class Void : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if(collision.gameObject.tag.Equals("Player"))
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 }

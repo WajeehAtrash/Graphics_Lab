@@ -27,7 +27,8 @@ public class PlayerMovement : PortalableObject
     public override void Warp()
     {
         base.Warp();
-        cam.ResetRotation();
+        if(cam!=null)
+            cam.ResetRotation();
         transform.rotation = new Quaternion(0, 0, 0, 0);
     }
 
@@ -75,24 +76,33 @@ public class PlayerMovement : PortalableObject
         rBody.velocity = new Vector3(rBody.velocity.x, jumpforce, rBody.velocity.z);
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics.CheckSphere(groundCheck.position, 0.1f, groundLayer);
     }
+
     public bool GetIsControlled()
     {
         return isControled;
     }
+
     public void SetSpeed(float speed)
     {
         this.speed = speed;
     }
+
     public void SetNoPortal(bool val)
     {
         this.noPortal = val;
     }
+
     public bool GetNoPortal()
     {
         return this.noPortal;
+    }
+
+    public void ApplyVerticalForce(float force)
+    {
+        rBody.position = new Vector3(rBody.position.x, rBody.position.y+force, rBody.position.z);
     }
 }
