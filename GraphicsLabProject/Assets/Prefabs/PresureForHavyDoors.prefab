@@ -69,7 +69,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534987731718514742, guid: 91eba6be520456946be1b4b6ee93ad57, type: 3}
       propertyPath: m_Name
-      value: presurePlate Variant
+      value: PresureForHavyDoors
+      objectReference: {fileID: 0}
+    - target: {fileID: 4534987731718514743, guid: 91eba6be520456946be1b4b6ee93ad57, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 492695839732160102, guid: 91eba6be520456946be1b4b6ee93ad57, type: 3}

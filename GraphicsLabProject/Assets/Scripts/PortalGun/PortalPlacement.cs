@@ -65,6 +65,8 @@ public class PortalPlacement : MonoBehaviour
             //portal forward direction of the portal
             //the negative of the raycast’s intersection poin
             var portalForward = -hit.normal;
+            portals.Portals[portalID].SetForwardNormal(portalForward);
+            
             //----------------------------------------------------------------------------------------------------
             //the up direction for the portal
             //cross product of two vectors returns a new vector perpendicular to those two (portalforward ,portal right)

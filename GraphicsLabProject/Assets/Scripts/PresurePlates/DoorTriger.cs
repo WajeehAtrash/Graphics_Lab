@@ -6,7 +6,6 @@ public class DoorTriger : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject door;
-    [SerializeField] GameObject text;
     bool isOpened = false;
     private void OnTriggerEnter(Collider other)
     {
@@ -14,7 +13,6 @@ public class DoorTriger : MonoBehaviour
         {
             door.transform.position += new Vector3(0, 10, 0);
             isOpened = true;
-            text.SetActive(false);
         }
     }
 }

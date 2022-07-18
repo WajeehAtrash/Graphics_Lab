@@ -19,9 +19,11 @@ public class ColoredDoor : MonoBehaviour
         foreach(coloredPresurePlate presure in list)
         {
             if (!presure.GetIsPressed())
+            {
                 toOpen = false;
+            }
         }
-        if(toOpen)
+        if(toOpen&& !isOpened)
         {
             transform.position += new Vector3(0, 10, 0);
             isOpened = true;

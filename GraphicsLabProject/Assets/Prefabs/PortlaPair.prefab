@@ -96,6 +96,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8230075708587006107}
     m_Modifications:
+    - target: {fileID: 7881615169077707361, guid: 2a118b1a44d92ef40b61d765d121ef77, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 876cc1633e30f064da37f1a1244a53f5, type: 2}
     - target: {fileID: 7881615169544920704, guid: 2a118b1a44d92ef40b61d765d121ef77, type: 3}
       propertyPath: <OtherPortal>k__BackingField
       value: 
@@ -104,9 +108,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: portal1
       objectReference: {fileID: 0}
+    - target: {fileID: 7881615169544920707, guid: 2a118b1a44d92ef40b61d765d121ef77, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 876cc1633e30f064da37f1a1244a53f5, type: 2}
     - target: {fileID: 7881615169544920764, guid: 2a118b1a44d92ef40b61d765d121ef77, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881615169544920764, guid: 2a118b1a44d92ef40b61d765d121ef77, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881615169544920764, guid: 2a118b1a44d92ef40b61d765d121ef77, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7881615169544920764, guid: 2a118b1a44d92ef40b61d765d121ef77, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7881615169544920764, guid: 2a118b1a44d92ef40b61d765d121ef77, type: 3}
       propertyPath: m_LocalPosition.x
@@ -173,12 +193,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8230075708587006107}
     m_Modifications:
+    - target: {fileID: 3730940893672380056, guid: 74c1e543bb32ece4da28bcd2778a3ce0, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 876cc1633e30f064da37f1a1244a53f5, type: 2}
     - target: {fileID: 3730940893672380061, guid: 74c1e543bb32ece4da28bcd2778a3ce0, type: 3}
       propertyPath: m_Name
       value: portal2
       objectReference: {fileID: 0}
     - target: {fileID: 3730940893672380062, guid: 74c1e543bb32ece4da28bcd2778a3ce0, type: 3}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3730940893672380062, guid: 74c1e543bb32ece4da28bcd2778a3ce0, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3730940893672380062, guid: 74c1e543bb32ece4da28bcd2778a3ce0, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3730940893672380062, guid: 74c1e543bb32ece4da28bcd2778a3ce0, type: 3}
+      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3730940893672380062, guid: 74c1e543bb32ece4da28bcd2778a3ce0, type: 3}
@@ -225,6 +261,10 @@ PrefabInstance:
       propertyPath: <OtherPortal>k__BackingField
       value: 
       objectReference: {fileID: 8230075709819401562}
+    - target: {fileID: 3730940893956935793, guid: 74c1e543bb32ece4da28bcd2778a3ce0, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 876cc1633e30f064da37f1a1244a53f5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74c1e543bb32ece4da28bcd2778a3ce0, type: 3}
 --- !u!114 &8230075709029323588 stripped
